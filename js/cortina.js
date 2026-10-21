@@ -45,13 +45,21 @@
 
   /* ---------- la grieta: donde se partirá la losa ---------- */
   // en escritorio, a la altura del borde izquierdo de la foto de la portada (por ahí aparece el río)
+  // en escritorio la grieta de la losa ES el borde izquierdo de la foto de la portada (el mismo
+  // polígono que .portada__foto en el CSS: x = 4,5 % + desvío × 1,15 del ancho de la foto) y
+  // por encima y por debajo de la foto sigue la misma veta; en el móvil, por el centro
   const losaFoto = document.querySelector('.portada__losa');
-  let cx = 50;
+  let cx = 50, P = W.GRIETA.map(([dx, y]) => [50 + dx * (innerWidth < 700 ? 1.6 : 1), y]);
   if (losaFoto && innerWidth >= 1000) {
-    const r = losaFoto.getBoundingClientRect();
-    if (r.width > 0) cx = Math.min(70, Math.max(35, (r.left + r.width * .04) / innerWidth * 100));
+    const r = losaFoto.getBoundingClientRect(), vw = innerWidth, vh = innerHeight;
+    if (r.width > 0 && r.top >= 0 && r.bottom <= vh) {
+      const borde = W.GRIETA.map(([dx, y]) => [(r.left + r.width * (4.5 + dx * 1.15) / 100) / vw * 100, (r.top + r.height * y / 100) / vh * 100]);
+      const arriba = r.top / vh * 100, abajo = (vh - r.bottom) / vh * 100, x0 = borde[0][0], x1 = borde[borde.length - 1][0];
+      const tramo = (desde, alto, x, sentido) => [.33, .66].map((f, i) => [x + (i ? -.6 : .5) * sentido, desde + alto * f]);
+      P = [[x0 + .4, 0], ...tramo(0, arriba, x0, 1), ...borde, ...tramo(r.bottom / vh * 100, abajo, x1, -1), [x1 - .3, 100]];
+      cx = x0;
+    }
   }
-  const P = W.GRIETA.map(([dx, y]) => [cx + dx * (innerWidth < 700 ? 1.6 : 1), y]);
   const pct = (v) => v.toFixed(2) + '%';
   const izq = 'polygon(0 0, ' + P.map(([x, y]) => pct(x) + ' ' + pct(y)).join(', ') + ', 0 100%)';
   const der = 'polygon(100% 0, 100% 100%, ' + P.slice().reverse().map(([x, y]) => pct(x) + ' ' + pct(y)).join(', ') + ')';

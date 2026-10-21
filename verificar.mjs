@@ -71,7 +71,15 @@ const html = fs.readFileSync(path.join(RAIZ, 'index.html'), 'utf8');
   }
   const faltan = [...rutas].filter((r) => !fs.existsSync(path.join(RAIZ, r)));
   comprobar(faltan.length === 0, `index.html: existen los ${rutas.size} archivos que enlaza`, faltan);
-  comprobar(/rel="preload" as="image" type="image\/avif" imagesrcset="img\/fotos\/rio-ventana-hero-480\.avif/.test(html), 'la foto de la portada va precargada (la misma que pinta el <picture>)');
+  comprobar(/rel="preload" as="image" type="image\/avif" imagesrcset="img\/fotos\/rio-ventana-hero-480\.avif 480w, img\/fotos\/rio-ventana-hero-640\.avif 640w"/.test(html), 'la foto de la portada va precargada (la misma que pinta el <picture>)');
+  {
+    const lista = JSON.parse(fs.readFileSync(path.join(RAIZ, 'scripts/fotos-lista.json'), 'utf8'));
+    const heroe = lista.find((f) => f.nombre === 'rio-ventana-hero');
+    comprobar(/bVistas-al-jardin-desde-la-ventana/.test(heroe.ruta) && !heroe.recorte && lista.filter((f) => /rg-12/.test(f.ruta)).every((f) => f.nombre === 'rio-ventana') && !/rio-ventana-\d|data-foto="rio-ventana"/.test(html), 'la portada es la vista desde la ventana de casasrurales.net, entera; rg-12 ya no sale en la página (solo la pide, pequeña, la ficha del río del módulo Casa)');
+    const pngTam = (f) => { const b = fs.readFileSync(f); return [b.readUInt32BE(16), b.readUInt32BE(20)]; };
+    const m = path.join(RAIZ, 'img/mascaras/rio-ventana-hero.png');
+    comprobar(!fs.existsSync(m) || pngTam(m).join('x') === '640x520', 'la máscara del agua de la portada tiene el tamaño de la foto (640×520)', fs.existsSync(m) ? pngTam(m) : 'sin máscara');
+  }
   const texto = html.replace(/<script[\s\S]*?<\/script>/g, '').replace(/<style[\s\S]*?<\/style>/g, '').replace(/<blockquote[\s\S]*?<\/blockquote>/g, '').replace(/<[^>]+>/g, ' ');
   comprobar(!/\b(1|una|2|dos)( sola| única)? (reseña|opinion|opinión|opiniones|reseñas)\b/i.test(texto) && !/la (primera|segunda) (reseña|opinión)/i.test(texto), 'sin recuento de opiniones (ni «2 opiniones» ni «una reseña»)');
   comprobar(!/el mejor|los mejores|la mejor|clientes satisfechos|cientos de|miles de|sin permanencia|garantizad/i.test(texto), 'sin superlativos propios ni prueba social inventada (las citas, aparte)');
@@ -146,10 +154,10 @@ try {
       const R = (s) => document.querySelector(s).getBoundingClientRect();
       const img = document.querySelector('.portada__foto img');
       const t = R('.portada__txt'), l = R('.portada__losa');
-      return { carga: img.complete && img.naturalWidth > 0, cur: img.currentSrc.split('/').pop(), ancho: l.width, solapa: !(t.right <= l.left || l.right <= t.left || t.bottom <= l.top || l.bottom <= t.top), cab: document.getElementById('cab').getBoundingClientRect().bottom <= t.top, abierta: document.getElementById('portada').classList.contains('abierta'), titulo: getComputedStyle(document.querySelector('.portada__tit .ln > span')).transform };
+      return { carga: img.complete && img.naturalWidth > 0, cur: img.currentSrc.split('/').pop(), ancho: l.width, prop: +(l.width / l.height).toFixed(3), centro: Math.abs((t.top + t.bottom) / 2 - (l.top + l.bottom) / 2), solapa: !(t.right <= l.left || l.right <= t.left || t.bottom <= l.top || l.bottom <= t.top), cab: document.getElementById('cab').getBoundingClientRect().bottom <= t.top, abierta: document.getElementById('portada').classList.contains('abierta'), titulo: getComputedStyle(document.querySelector('.portada__tit .ln > span')).transform };
     });
-    comprobar(p.carga && /rio-ventana-hero-(480|622)\.(avif|webp|jpg)/.test(p.cur), 'la foto del río (sin marcos) carga en la portada', p);
-    comprobar(p.ancho <= 622 * 1.3 && !p.solapa && p.cab, 'en escritorio la foto va en su losa, a ≤ 1,3× su tamaño, sin pisar el titular ni la cabecera', p);
+    comprobar(p.carga && /rio-ventana-hero-(480|640)\.(avif|webp|jpg)/.test(p.cur), 'la vista desde la ventana carga en la portada', p);
+    comprobar(p.ancho <= 640 * 1.1 + 1 && Math.abs(p.prop - 640 / 520) < .02 && !p.solapa && p.cab && p.centro < 40, 'en escritorio la foto va en su losa apaisada (≤ 1,1× su tamaño), centrada en vertical con el texto, sin pisarlo ni pisar la cabecera', p);
     comprobar(p.abierta && p.titulo === 'none', 'sin cortina, la portada ya está abierta y el titular entero', p);
     comprobar(await page.evaluate(() => { const el = document.querySelector('#portada [data-modulo="rio"]'); return !!el.querySelector('img') && (el.dataset.montado === '1' || !window.Laxa.rio); }), 'portada: el módulo Río monta sin WebGL y deja la foto (no se pinta el agua en la prueba)');
     comprobar(await page.evaluate(() => !!document.querySelector('#portada [data-rio-sonido]')), 'portada: el hueco del botón «Oír el río»');
@@ -347,10 +355,10 @@ try {
     comprobar(!salen.length, `${w}×${h}: nada se sale por la derecha`, salen);
     const r = await page.evaluate(() => {
       const R = (s) => document.querySelector(s).getBoundingClientRect();
-      const t = R('.portada__txt'), cab = R('#cab'), pie = R('.portada__pie'), p = R('#portada'), f = R('.portada__losa');
-      return { bajoCab: t.top >= cab.bottom, bajoPie: t.top >= pie.bottom - 1, dentro: t.bottom <= p.bottom, foto: Math.round(f.width) === innerWidth && f.height >= innerHeight - 1 };
+      const t = R('.portada__txt'), cab = R('#cab'), pie = R('.portada__pie'), p = R('#portada'), f = R('.portada__foto');
+      return { fotoBajoCab: f.top >= cab.bottom - 1, fotoAncho: f.width >= Math.min(innerWidth, 760) - 1, prop: Math.abs(f.width / f.height - 640 / 520) < .02, pieBajoFoto: pie.top >= f.bottom - 1, textoBajoPie: t.top >= pie.bottom - 1, dentro: t.bottom <= p.bottom };
     });
-    comprobar(Object.values(r).every(Boolean), `${w}×${h}: la foto a pantalla completa y el texto abajo, sin pisar la cabecera ni el pie de foto`, r);
+    comprobar(Object.values(r).every(Boolean), `${w}×${h}: la foto arriba a todo el ancho con su proporción y el texto debajo, sin pisar nada`, r);
     if (w < 700) {
       const pd = await page.evaluate(() => { const env = document.querySelector('#alrededor .env'); const borde = env.getBoundingClientRect().left + parseFloat(getComputedStyle(env).paddingLeft); return [...document.querySelectorAll('.rioabajo__piedra')].every((e) => e.getBoundingClientRect().right <= borde + 2 && e.getBoundingClientRect().left >= 0); });
       comprobar(pd, `${w}×${h}: las paradas de «Alrededor» van en el borde izquierdo, donde baja la corriente`);
@@ -369,7 +377,7 @@ try {
       comprobar(await page.evaluate(() => document.getElementById('visor').open && document.getElementById('visor-img').dataset.nombre === 'piscina'), 'en el móvil, tocar una miniatura abre su foto');
       await page.click('#visor-cerrar');
       // la barra del navegador: 6 cambios de alto → ningún «laxa:resize» y nada se mueve
-      await page.addStyleTag({ content: '.portada{min-height:844px!important} .con-movimiento .puente{height:1900px!important} .puente__escena{height:844px!important} .siglos__modulo.es-reservado:not([data-montado="1"]){min-height:3200px!important}' });
+      await page.addStyleTag({ content: '.con-movimiento .puente{height:1900px!important} .puente__escena{height:844px!important} .siglos__modulo.es-reservado:not([data-montado="1"]){min-height:3200px!important}' });
       // en Playwright los svh cambian con el alto (en un móvil de verdad no): se congelan los altos de las secciones
       await page.evaluate(() => document.querySelectorAll('main > section').forEach((s) => { s.style.height = s.offsetHeight + 'px'; }));
       const n = await page.evaluate(() => { window.__res = 0; addEventListener('laxa:resize', () => window.__res++); scrollTo(0, 5200); return document.getElementById('llegar').getBoundingClientRect().top + scrollY; });

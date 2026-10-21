@@ -1,5 +1,5 @@
 [
- {"nombre": "rio-ventana-hero", "ruta": "fotos/rg-12.jpg", "recorte": {"left": 232, "top": 0, "width": 622, "height": 768}, "nota": "el rio desde la ventana SIN los marcos: x 232-854. Mismo recorte para img/mascaras/rio-ventana-hero.png"},
+ {"nombre": "rio-ventana-hero", "ruta": "fotos-cr/bVistas-al-jardin-desde-la-ventana.jpg", "fuerza": 0.35, "suave": true, "nota": "la portada: la vista desde la ventana ENTERA (640x520, con los marcos), sin recorte y sin ampliar. Misma geometria para img/mascaras/rio-ventana-hero.png"},
  {"nombre": "puente", "ruta": "fotos/rg-01.jpg", "recorte": {"left": 42, "top": 0, "width": 940, "height": 768}, "nota": "sin las bandas negras: x 42-982. Mismo recorte para img/mascaras/puente.png"},
  {"nombre": "fachada", "ruta": "fotos/rg-02.jpg"},
  {"nombre": "aldea", "ruta": "fotos/rg-03.jpg"},
@@ -11,12 +11,11 @@
  {"nombre": "hab-matrimonio", "ruta": "fotos/rg-09.jpg", "interior": true},
  {"nombre": "lareira", "ruta": "fotos/rg-10.jpg", "interior": true},
  {"nombre": "jardin", "ruta": "fotos/rg-11.jpg"},
- {"nombre": "rio-ventana", "ruta": "fotos/rg-12.jpg"},
+ {"nombre": "rio-ventana", "ruta": "fotos/rg-12.jpg", "nota": "solo para la ficha del rio del modulo Casa (pequena); la web ya no la usa"},
  {"nombre": "hab-dobles-2", "ruta": "fotos/rg-13.jpg", "interior": true},
  {"nombre": "piscina", "ruta": "fotos/rg-14.jpg"},
  {"nombre": "escalera", "ruta": "fotos/rg-15.jpg", "interior": true},
  {"nombre": "noche", "ruta": "fotos-cr/aFachada-iluminada-con-cesped.jpg", "suave": true},
  {"nombre": "nieve", "ruta": "fotos-cr/100_2185.JPG", "suave": true},
- {"nombre": "ventana-2", "ruta": "fotos-cr/bVistas-al-jardin-desde-la-ventana.jpg"},
  {"nombre": "barbacoa-2", "ruta": "fotos-cr/cZona-de-barbacoa-cubierta-de-piedra.jpg"}
 ]

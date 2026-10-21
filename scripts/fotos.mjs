@@ -1,8 +1,10 @@
 /* Prepara las fotos de la web desde las de sus portales (ref/fotos: Ruralgest, 1024x768;
    ref/fotos-cr: casasrurales.net, 640 px). Uso: node scripts/fotos.mjs
-   - Recortes declarados en scripts/fotos-lista.json. El de `rio-ventana-hero` (rg-12 sin los
-     marcos de la ventana) y el de `puente` (rg-01 sin las bandas negras) son los que usa el
-     módulo Río para sus máscaras: si se cambian aquí, hay que rehacer img/mascaras/.
+   - Recortes declarados en scripts/fotos-lista.json. La geometría de `rio-ventana-hero` (la vista
+     desde la ventana de casasrurales.net, entera, 640×520) y el recorte de `puente` (rg-01 sin las
+     bandas negras) son los que usa el módulo Río para sus máscaras: si se cambian aquí, hay que
+     rehacer img/mascaras/ (python -I pruebas/rio-mascaras.py).
+   - `fuerza` (0–1) suaviza la gradación en las fotos que ya tienen buen color.
    - Gradación común para que parezcan de la misma sesión (son fotos viejas con tono HDR):
      menos saturación en los verdes y los naranjas, negros más suaves, un punto más fríos.
      Las de dentro, además, medio balance de blancos «mundo gris» (vienen amarillas).
@@ -30,7 +32,7 @@ function peso(h, centro, ancho) {
   return d >= ancho ? 0 : 0.5 + 0.5 * Math.cos(Math.PI * d / ancho);
 }
 
-function gradar(data, canales, interior) {
+function gradar(data, canales, interior, fuerza = 1) {
   const n = data.length / canales;
   // medio «mundo gris» en las de dentro
   let gr = 1, gg = 1, gb = 1;
@@ -71,7 +73,8 @@ function gradar(data, canales, interior) {
     r = curva(r); g = curva(g); b = curva(b);
     // un punto más fríos
     r *= 0.982; b = Math.min(1, b * 1.018 + 0.006);
-    data[i] = Math.round(r * 255); data[i + 1] = Math.round(g * 255); data[i + 2] = Math.round(b * 255);
+    const o0 = data[i], o1 = data[i + 1], o2 = data[i + 2];
+    data[i] = Math.round(o0 + (r * 255 - o0) * fuerza); data[i + 1] = Math.round(o1 + (g * 255 - o1) * fuerza); data[i + 2] = Math.round(o2 + (b * 255 - o2) * fuerza);
   }
   return data;
 }
@@ -83,7 +86,7 @@ for (const f of FOTOS) {
   let base = sharp(fuente).rotate();
   if (f.recorte) base = base.extract(f.recorte);
   const { data, info } = await base.removeAlpha().raw().toBuffer({ resolveWithObject: true });
-  gradar(data, info.channels, !!f.interior);
+  gradar(data, info.channels, !!f.interior, f.fuerza ?? 1);
   const buf = await sharp(data, { raw: { width: info.width, height: info.height, channels: info.channels } }).png().toBuffer();
   const W = info.width, H = info.height;
   const unicos = [...new Set([...ANCHOS.filter((w) => w < W - 30), W])];

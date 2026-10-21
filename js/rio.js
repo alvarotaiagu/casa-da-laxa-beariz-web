@@ -19,12 +19,13 @@
   // ---- El agua de cada foto (coordenadas de la foto recortada, 0..1) ----
   // flujo: dirección de la corriente en px de la foto, a la izquierda (A) y a la derecha (B) de «corte»
   const AGUAS = {
-    // rg-12 desde la ventana: entra por la derecha bajo el puente y cae hacia el primer plano
-    'rio-ventana-hero': { flujo: [-0.55, 0.84, -0.95, 0.31], corte: [0.12, 0.4], vel: 1, recorrido: 7, brillo: 1, sonido: { nivel: 0.5, tono: 1 } },
+    // portada (foto de casasrurales 640x520, nítida, entera con los marcos): los rápidos salen de debajo
+    // del puente y bajan de derecha a izquierda hacia el marco; poca deformación (que corra, que no se derrita)
+    'rio-ventana-hero': { flujo: [-0.76, 0.65, -0.93, 0.37], corte: [0.3, 0.56], vel: 1.1, recorrido: 4.5, turb: 1.5, brillo: 1.3, onda: 2.6, sonido: { nivel: 0.5, tono: 1 } },
     // rg-01: los rápidos de abajo a la derecha, de cerca
-    puente: { flujo: [-0.88, 0.47, -0.88, 0.47], corte: [0, 1], vel: 1.3, recorrido: 10, brillo: 1.25, sonido: { nivel: 0.68, tono: 1.3 } },
+    puente: { flujo: [-0.88, 0.47, -0.88, 0.47], corte: [0, 1], vel: 1.3, recorrido: 10, turb: 3.4, brillo: 1.25, onda: 3.6, sonido: { nivel: 0.68, tono: 1.3 } },
   };
-  const AGUA_POR_DEFECTO = { flujo: [-1, 0, -1, 0], corte: [0, 1], vel: 1, recorrido: 7, brillo: 1, sonido: { nivel: 0.55, tono: 1 } };
+  const AGUA_POR_DEFECTO = { flujo: [-1, 0, -1, 0], corte: [0, 1], vel: 1, recorrido: 6, turb: 2.4, brillo: 1, onda: 3, sonido: { nivel: 0.55, tono: 1 } };
   const MAX_ONDAS = 8, VIDA_ONDA = 1.25, DPR_MAX = 1.5;
 
   const reducido = () => !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
@@ -170,7 +171,7 @@ varying vec2 vUv;
 uniform sampler2D uFoto, uMasc;
 uniform vec4 uCaja;      // dónde cae la foto en el lienzo (object-fit): xy origen, zw tamaño, en 0..1
 uniform vec2 uTam;       // tamaño de la foto en px
-uniform float uT, uFuerza, uVel, uRecorrido, uBrillo;
+uniform float uT, uFuerza, uVel, uRecorrido, uBrillo, uTurb, uOnda;
 uniform vec4 uFlujo;     // dirección de la corriente a la izquierda (xy) y a la derecha (zw)
 uniform vec2 uCorte;
 uniform vec4 uOndas[${MAX_ONDAS}]; // x, y (px de la foto), edad (s), fuerza
@@ -204,8 +205,8 @@ void main(){
   float fase = fract(t * .55 + vn(px / 36.));
   float fase2 = fract(fase + .5);
   float w0 = 1. - abs(2. * fase - 1.);
-  vec2 d0 = dir * (fase - .5) * uRecorrido + turb * 3.4;
-  vec2 d1 = dir * (fase2 - .5) * uRecorrido + turb * 3.4;
+  vec2 d0 = dir * (fase - .5) * uRecorrido + turb * uTurb;
+  vec2 d1 = dir * (fase2 - .5) * uRecorrido + turb * uTurb;
 
   // 3) anillos al arrastrar: solo sobre el agua
   vec2 dOnda = vec2(0.); float luzOnda = 0.;
@@ -217,7 +218,7 @@ void main(){
     float vida = 1. - o.z / ${VIDA_ONDA.toFixed(2)};
     float env = exp(-x * x / 260.) * o.w * vida * vida;
     float s = sin(x * .42) * env;
-    dOnda += v / d * s * 3.6; luzOnda += s;
+    dOnda += v / d * s * uOnda; luzOnda += s;
   }
 
   vec2 e = 1. / uTam;
@@ -431,7 +432,7 @@ void main(){
         const a = gl.getAttribLocation(prog, 'aPos');
         gl.enableVertexAttribArray(a); gl.vertexAttribPointer(a, 2, gl.FLOAT, false, 0, 0);
         U = {};
-        ['uFoto', 'uMasc', 'uCaja', 'uTam', 'uT', 'uFuerza', 'uVel', 'uRecorrido', 'uBrillo', 'uFlujo', 'uCorte', 'uOndas[0]']
+        ['uFoto', 'uMasc', 'uCaja', 'uTam', 'uT', 'uFuerza', 'uVel', 'uRecorrido', 'uBrillo', 'uTurb', 'uOnda', 'uFlujo', 'uCorte', 'uOndas[0]']
           .forEach((n) => { U[n] = gl.getUniformLocation(prog, n); });
         textura(gl, 1, mImg);
         textura(gl, 0, img);          // la foto, en la unidad 0 (subirFoto la reutiliza)
@@ -439,6 +440,7 @@ void main(){
         gl.uniform1i(U.uFoto, 0); gl.uniform1i(U.uMasc, 1);
         gl.uniform2f(U.uTam, img.naturalWidth, img.naturalHeight);
         gl.uniform1f(U.uVel, agua.vel); gl.uniform1f(U.uRecorrido, agua.recorrido); gl.uniform1f(U.uBrillo, agua.brillo);
+        gl.uniform1f(U.uTurb, agua.turb); gl.uniform1f(U.uOnda, agua.onda);
         gl.uniform4fv(U.uFlujo, agua.flujo); gl.uniform2fv(U.uCorte, agua.corte);
         gl.uniform4fv(U['uOndas[0]'], ondasU);
       } catch (e) {

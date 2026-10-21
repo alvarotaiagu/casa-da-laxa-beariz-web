@@ -52,7 +52,7 @@ const og = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630">
   <text x="62" y="420" font-family="Arial, sans-serif" font-size="22" fill="#3E4143">Casa de piedra de hacia 1800, entera para seis,</text>
   <text x="62" y="450" font-family="Arial, sans-serif" font-size="22" fill="#3E4143">con el jardín en la orilla del río.</text>
 </svg>`;
-const foto = await sharp(path.join(RAIZ, 'img/fotos/rio-ventana-hero-622.jpg')).resize(470, 630, { fit: 'cover', position: 'centre' }).toBuffer();
+const foto = await sharp(path.join(RAIZ, 'img/fotos/rio-ventana-hero-640.jpg')).resize(470, 630, { fit: 'cover', position: 'centre' }).toBuffer();
 // el borde izquierdo de la foto, con la grieta
 const grieta = [[0, 0], [-0.85, 3.12], [-1.88, 6.48], [-1.05, 8.95], [-1.37, 13.92], [-1.58, 19.69], [-2.39, 25.48], [-1.69, 29.48], [-2.91, 33.33], [-2.81, 37.58], [-3.56, 41.37], [-3.6, 44.24], [-2.41, 47.35], [-2.33, 49.35], [-1.7, 51.33], [-0.89, 55.15], [-0.14, 58.95], [0.44, 62.18], [1.66, 66.67], [2.7, 70.15], [3.47, 72.35], [3.6, 74.4], [1.94, 76.14], [0.74, 78.63], [0.06, 82.68], [-0.32, 85.54], [-3.17, 90.89], [0.37, 95.21], [1.33, 100]];
 const poli = grieta.map(([dx, y]) => `${(26 + dx * 5).toFixed(1)},${(y * 6.3).toFixed(1)}`).join(' ') + ' 470,630 470,0';

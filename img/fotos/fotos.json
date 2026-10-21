@@ -3,17 +3,12 @@
   "nombre": "rio-ventana-hero",
   "anchos": [
    480,
-   622
+   640
   ],
-  "ancho": 622,
-  "alto": 768,
-  "origen": "fotos/rg-12.jpg",
-  "recorte": {
-   "left": 232,
-   "top": 0,
-   "width": 622,
-   "height": 768
-  }
+  "ancho": 640,
+  "alto": 520,
+  "origen": "fotos-cr/bVistas-al-jardin-desde-la-ventana.jpg",
+  "recorte": null
  },
  {
   "nombre": "puente",
@@ -220,17 +215,6 @@
   "ancho": 640,
   "alto": 480,
   "origen": "fotos-cr/100_2185.JPG",
-  "recorte": null
- },
- {
-  "nombre": "ventana-2",
-  "anchos": [
-   480,
-   640
-  ],
-  "ancho": 640,
-  "alto": 520,
-  "origen": "fotos-cr/bVistas-al-jardin-desde-la-ventana.jpg",
   "recorte": null
  },
  {
