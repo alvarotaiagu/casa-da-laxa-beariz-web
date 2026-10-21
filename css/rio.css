@@ -1,0 +1,65 @@
+/* Casa da Laxa · módulo Río (js/rio.js): el lienzo del agua sobre la foto y el botón «Oír el río».
+   Todo bajo [data-modulo="rio"] o .rio-sonido. Los tokens son los de css/estilos.css, con respaldo. */
+
+/* el lienzo se coloca respecto a el; :where() no pesa, así manda la regla de la web si la hay */
+:where([data-modulo="rio"]) { position: relative; }
+
+[data-modulo="rio"] .rio-lienzo {
+  position: absolute; left: 0; top: 0;
+  display: block; pointer-events: none;
+  opacity: 0; transition: opacity .9s cubic-bezier(.2, .7, .2, 1);
+}
+[data-modulo="rio"] .rio-lienzo.rio-listo { opacity: 1; }
+[data-modulo="rio"] .rio-lienzo.rio-quieto { opacity: 0; transition-duration: .4s; }
+
+/* el gesto de las ondas: en táctil, el scroll vertical y el zoom siguen siendo de la página */
+[data-modulo="rio"][data-rio-gesto="1"] { touch-action: pan-y pinch-zoom; }
+
+/* ---------------- «Oír el río» ---------------- */
+.rio-sonido {
+  --rio-fondo: transparent;
+  display: inline-flex; align-items: center; gap: .6em;
+  min-height: 44px; padding: .55em 1.05em .55em .85em;
+  border: 1px solid color-mix(in srgb, currentColor 42%, transparent);
+  border-radius: 999px;
+  background: var(--rio-fondo); color: inherit;
+  font: 400 12.5px/1 var(--mono, 'IBM Plex Mono', ui-monospace, monospace);
+  letter-spacing: .14em; text-transform: uppercase;
+  cursor: pointer; -webkit-tap-highlight-color: transparent;
+  transition: background-color .3s, border-color .3s, color .3s;
+}
+.rio-sonido:hover { border-color: currentColor; }
+.rio-sonido[aria-pressed="true"] {
+  background: var(--rio, #2F4B45); color: var(--espuma, #E6EEEA);
+  border-color: var(--rio, #2F4B45);
+}
+/* foco de respaldo (sin peso: el foco de losa tallada de la web manda) */
+:where(.rio-sonido):focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+
+/* cuatro barras: planas en silencio, respiran cuando suena */
+.rio-sonido__ondas { display: inline-flex; align-items: center; gap: 2px; height: 14px; }
+.rio-sonido__ondas i {
+  display: block; width: 2px; height: 100%; border-radius: 1px;
+  background: currentColor; transform: scaleY(.22); transform-origin: 50% 50%;
+  transition: transform .4s cubic-bezier(.2, .7, .2, 1);
+}
+.rio-sonido[aria-pressed="true"] .rio-sonido__ondas i { animation: rio-barra 1.3s ease-in-out infinite alternate; }
+.rio-sonido[aria-pressed="true"] .rio-sonido__ondas i:nth-child(2) { animation-duration: .9s; animation-delay: -.3s; }
+.rio-sonido[aria-pressed="true"] .rio-sonido__ondas i:nth-child(3) { animation-duration: 1.6s; animation-delay: -.8s; }
+.rio-sonido[aria-pressed="true"] .rio-sonido__ondas i:nth-child(4) { animation-duration: 1.1s; animation-delay: -.5s; }
+@keyframes rio-barra { from { transform: scaleY(.3); } to { transform: scaleY(1); } }
+
+/* cuando el módulo lo crea encima de la foto (no había hueco [data-rio-sonido]) */
+.rio-sonido--foto {
+  position: absolute; left: 14px; bottom: 14px; z-index: 2;
+  --rio-fondo: color-mix(in srgb, var(--pizarra, #23272A) 62%, transparent);
+  color: var(--espuma, #E6EEEA);
+  border-color: color-mix(in srgb, var(--espuma, #E6EEEA) 38%, transparent);
+  -webkit-backdrop-filter: blur(8px) saturate(1.1); backdrop-filter: blur(8px) saturate(1.1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-modulo="rio"] .rio-lienzo { transition: none; }
+  .rio-sonido[aria-pressed="true"] .rio-sonido__ondas i { animation: none; transform: scaleY(.75); }
+  .rio-sonido[aria-pressed="true"] .rio-sonido__ondas i:nth-child(odd) { transform: scaleY(1); }
+}

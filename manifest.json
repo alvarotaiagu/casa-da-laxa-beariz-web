@@ -1,0 +1,13 @@
+{
+  "name": "Casa da Laxa · Magros, Beariz",
+  "short_name": "Casa da Laxa",
+  "lang": "es",
+  "start_url": "./",
+  "display": "browser",
+  "background_color": "#F1EDE5",
+  "theme_color": "#1E2F2B",
+  "icons": [
+    { "src": "marca/icono-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "marca/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+  ]
+}

@@ -1,0 +1,160 @@
+/* Casa da Laxa · módulo Casa · «La casa por dentro»
+   La casa en corte (js/casa.js). Todo bajo [data-modulo="casa"]; tokens y letras
+   de la web con var(--x, valor) por si estilos.css aún no está. */
+
+[data-modulo="casa"] {
+  --casa-cab: var(--cab, 64px);
+  --casa-tinta: var(--pizarra, #23272A);
+  --casa-suave: var(--tinta-2, #4F5350);
+  --casa-linea: rgba(35, 39, 42, .16);
+  --casa-linea-2: rgba(35, 39, 42, .34);
+  --casa-papel: var(--cal-2, #E7E1D5);
+  --casa-acento: var(--solaina, #7A3E28);
+  --casa-acento-texto: var(--solaina-texto, #693421);
+  --casa-recorrido: 150svh;
+  --casa-tit: var(--f-tit, 'Gloock', Georgia, serif);
+  --casa-txt: var(--f-txt, 'Hanken Grotesk', system-ui, sans-serif);
+  --casa-mono: var(--f-mono, 'IBM Plex Mono', ui-monospace, monospace);
+}
+[data-modulo="casa"][data-fondo="oscuro"] {
+  --casa-tinta: var(--cal, #F1EDE5);
+  --casa-suave: var(--niebla, #B9C6C0);
+  --casa-linea: rgba(241, 237, 229, .18);
+  --casa-linea-2: rgba(241, 237, 229, .4);
+  --casa-papel: var(--rio-hondo, #1E2F2B);
+  --casa-acento-texto: var(--solaina-claro, #E3AD92);
+}
+
+.casa-mod { display: grid; grid-template-columns: minmax(0, 1fr); gap: 22px 0; color: var(--casa-tinta); font-family: var(--casa-txt); }
+.casa-mod ul, .casa-mod ol { list-style: none; margin: 0; padding: 0; }
+.casa-mod p, .casa-mod h3 { margin: 0; }
+
+/* ---------- el contador y «Ver fechas» ---------- */
+.casa-cabeza { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 28px; padding: 16px 0; border-top: 1px solid var(--casa-linea-2); border-bottom: 1px solid var(--casa-linea); }
+.casa-cifras { display: flex; flex-wrap: wrap; gap: 8px 26px; }
+.casa-cifras li { display: flex; align-items: baseline; gap: 8px; }
+.casa-cifras b { font: 400 clamp(1.9rem, 3vw, 2.6rem)/1 var(--casa-tit); }
+.casa-cifras span { font: 400 .74rem/1.2 var(--casa-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--casa-suave); }
+.casa-fechas { display: inline-flex; align-items: center; min-height: 46px; padding: 0 22px; background: var(--casa-acento); color: #FBF9F4; font: 600 .98rem/1 var(--casa-txt); text-decoration: none; border-radius: 2px; box-shadow: inset 1px 1px 0 rgba(255, 255, 255, .18), inset -1px -1px 0 rgba(0, 0, 0, .25); transition: background-color .25s; }
+.casa-fechas:hover { background: color-mix(in srgb, var(--casa-acento) 86%, #000); }
+
+/* ---------- la pista: la escena se queda fija mientras la casa se abre ---------- */
+.casa-pista { position: relative; }
+.casa-pista::after { content: ""; display: block; height: var(--casa-recorrido); }
+.casa-pista.es-quieta::after { display: none; }
+.casa-escena { position: sticky; top: calc(var(--casa-cab) + 8px); display: flex; flex-direction: column; gap: 12px; height: calc(100svh - var(--casa-cab) - 16px); min-height: 440px; }
+.casa-pista.es-quieta .casa-escena { position: relative; top: auto; height: auto; min-height: 0; }
+.casa-lienzo { position: relative; flex: none; margin: auto; width: min(100%, calc((100svh - var(--casa-cab) - 132px) * var(--casa-ar, 1.3))); aspect-ratio: var(--casa-ar, 1.3); overflow: clip; isolation: isolate; }
+.casa-pista.es-quieta .casa-lienzo { width: min(100%, 1000px); margin: 0 auto; }
+.casa-lienzo::before { content: ""; position: absolute; inset: 22% 6% 2%; z-index: -1; border-radius: 50%; background: radial-gradient(closest-side, rgba(201, 194, 178, .7), rgba(201, 194, 178, 0)); }
+[data-fondo="oscuro"] .casa-lienzo::before { background: radial-gradient(closest-side, rgba(230, 238, 234, .12), rgba(230, 238, 234, 0)); }
+.casa-svg { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; display: block; }
+
+.casa-pasos { display: flex; flex-wrap: wrap; gap: 6px 20px; font: 400 .72rem/1 var(--casa-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--casa-suave); }
+.casa-pasos li { display: flex; align-items: center; gap: 9px; transition: color .3s; }
+.casa-pasos li::before { content: ""; width: 16px; height: 1px; background: currentColor; opacity: .55; transition: width .45s var(--sale, ease), background-color .3s; }
+.casa-pasos li.es-hecho { color: var(--casa-tinta); }
+.casa-pasos li.es-actual { color: var(--casa-tinta); }
+.casa-pasos li.es-actual::before { width: 34px; opacity: 1; height: 2px; background: var(--casa-acento); }
+.casa-pista.es-quieta .casa-pasos, .casa-pista.es-quieta .casa-baja { display: none; }
+.casa-baja { position: absolute; right: 0; top: 0; font: 400 .72rem/1 var(--casa-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--casa-suave); transition: opacity .4s; }
+.casa-baja::after { content: " ↓"; }
+[data-modulo="casa"]:not([data-fase="cerrada"]) .casa-baja { opacity: 0; }
+
+.casa-nota { max-width: 62ch; padding-left: 12px; border-left: 2px solid var(--casa-acento); font: 400 .84rem/1.45 var(--casa-txt); color: var(--casa-suave); }
+.casa-nota b { font-weight: 600; color: var(--casa-tinta); }
+
+/* ---------- el dibujo ---------- */
+.casa-svg rect, .casa-svg polygon, .casa-svg path, .casa-svg circle, .casa-svg ellipse { vector-effect: non-scaling-stroke; }
+.casa-svg g > g > rect:first-child, .casa-svg polygon, .casa-svg > g > path:not(.casa-trazo) { stroke: rgba(35, 39, 42, .46); stroke-width: .6; stroke-linejoin: round; }
+.casa-svg > g > rect { stroke: rgba(35, 39, 42, .28); stroke-width: .5; }
+.casa-svg circle { stroke: rgba(35, 39, 42, .32); stroke-width: .6; }
+.casa-svg .casa-luz, .casa-svg .casa-lampara circle, .casa-svg .casa-deco:not(.casa-trazo) { stroke: none; }
+.casa-svg .casa-trazo { fill: none; }
+.casa-svg [data-e] { cursor: pointer; }
+.casa-svg .casa-luz { opacity: 0; transition: opacity .35s; }
+.casa-svg .casa-luz.es-activa { opacity: 1; }
+.casa-svg .casa-lampara { opacity: .8; }
+.casa-svg .casa-brasa { opacity: .8; }
+
+/* ---------- los números sobre el dibujo (solo puntero; el teclado usa la lista) ---------- */
+.casa-pines { position: absolute; inset: 0; pointer-events: none; }
+.casa-pin { position: absolute; z-index: 1; width: 28px; height: 28px; margin: -14px 0 0 -14px; display: grid; place-items: center; border-radius: 50%; pointer-events: auto; cursor: pointer; user-select: none; -webkit-user-select: none; -webkit-tap-highlight-color: transparent;
+  font: 500 .74rem/1 var(--casa-mono); color: var(--pizarra, #23272A); background: var(--granito, #C9C2B2);
+  box-shadow: inset 1px 1px 2px rgba(35, 39, 42, .4), inset -1px -1px 1px rgba(255, 255, 255, .55), 0 0 0 1.5px rgba(35, 39, 42, .85), 0 3px 8px rgba(0, 0, 0, .22);
+  transition: opacity .3s, transform .35s var(--sale, cubic-bezier(.16, 1, .3, 1)), background-color .2s, color .2s; }
+.casa-pin.es-oculto { opacity: 0; transform: scale(.5); pointer-events: none; }
+.casa-pin.es-activa { z-index: 2; background: var(--casa-acento); color: #FBF9F4; transform: scale(1.16); }
+.casa-pin::after { content: attr(data-nombre); position: absolute; left: calc(100% + 8px); top: 50%; transform: translateY(-50%); white-space: nowrap; padding: 6px 9px; border-radius: 2px; font: 500 .8rem/1 var(--casa-txt); letter-spacing: .01em; color: var(--cal, #F1EDE5); background: var(--pizarra, #23272A); opacity: 0; pointer-events: none; transition: opacity .2s; }
+.casa-pin.a-la-izq::after { left: auto; right: calc(100% + 8px); }
+.casa-pin:hover::after, .casa-pin.es-activa::after { opacity: 1; }
+.casa-pin.es-oculto::after { opacity: 0; }
+
+/* ---------- la lista de estancias y la ficha ---------- */
+.casa-panel { display: flex; flex-direction: column; gap: 22px; }
+.casa-ayuda { margin-bottom: 14px !important; font-size: .9rem; line-height: 1.45; color: var(--casa-suave); }
+.casa-grupo + .casa-grupo { margin-top: 14px; }
+.casa-grupo-t { margin-bottom: 8px !important; font: 400 .72rem/1 var(--casa-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--casa-suave); }
+.casa-grupo ul { display: flex; flex-wrap: wrap; gap: 6px; }
+.casa-chip { appearance: none; display: inline-flex; align-items: center; gap: 8px; min-height: 36px; padding: 4px 13px 4px 4px; border: 1px solid var(--casa-linea-2); border-radius: 999px; background: transparent; color: inherit; font: 500 .9rem/1.2 var(--casa-txt); text-align: left; cursor: pointer; transition: background-color .2s, border-color .2s, color .2s; }
+.casa-chip:hover { border-color: var(--casa-tinta); }
+.casa-chip-n { flex: none; display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; font: 500 .7rem/1 var(--casa-mono); color: var(--pizarra, #23272A); background: var(--granito, #C9C2B2); box-shadow: inset 1px 1px 2px rgba(35, 39, 42, .35), inset -1px -1px 1px rgba(255, 255, 255, .5); }
+.casa-chip.es-activa { background: var(--casa-acento); border-color: var(--casa-acento); color: #FBF9F4; }
+.casa-chip.es-activa .casa-chip-n { background: #FBF9F4; color: var(--casa-acento); }
+.casa-chip:focus-visible { outline: 2px solid var(--foco, var(--casa-acento)); outline-offset: 3px; box-shadow: 0 0 0 6px var(--foco-hueco, var(--casa-papel)), 0 0 0 7.5px var(--foco, var(--casa-acento)), inset 1px 1px 2px 1px rgba(35, 39, 42, .35); }
+
+.casa-fichas { display: grid; }
+.casa-ficha { grid-area: 1 / 1; display: grid; gap: 12px; align-content: start; visibility: hidden; opacity: 0; transition: opacity .25s, visibility 0s .25s; }
+.casa-ficha.es-visible { visibility: visible; opacity: 1; transition: opacity .25s; }
+.casa-ficha-planta { font: 400 .72rem/1 var(--casa-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--casa-acento-texto); }
+.casa-ficha-nombre { margin-top: 7px !important; font: 400 clamp(1.5rem, 2.3vw, 1.95rem)/1.08 var(--casa-tit); }
+.casa-ficha-nombre small { display: block; margin-top: 5px; font: 400 .95rem/1.3 var(--casa-txt); color: var(--casa-suave); }
+.casa-ficha-texto { font-size: .95rem; line-height: 1.5; color: var(--casa-suave); margin-top: 10px !important; max-width: 34ch; }
+.casa-ficha-fotos { position: relative; }
+.casa-foto1 { display: block; width: 100%; padding: 0; border: 0; background: none; }
+button.casa-foto1 { cursor: zoom-in; }
+.casa-foto1 img, .casa-foto2 img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; background: var(--granito, #C9C2B2); border-radius: 2px; }
+.casa-foto2 { position: absolute; right: 10px; bottom: 10px; width: 34%; pointer-events: none; }
+.casa-foto2 img { outline: 3px solid var(--casa-papel); box-shadow: 0 6px 18px rgba(0, 0, 0, .28); }
+.casa-sinfoto { display: grid; place-items: center; aspect-ratio: 4 / 3; padding: 12px; text-align: center; font: 400 .75rem/1.3 var(--casa-mono); letter-spacing: .06em; color: var(--pizarra, #23272A); background: repeating-linear-gradient(135deg, rgba(35, 39, 42, .06) 0 8px, rgba(35, 39, 42, 0) 8px 16px), var(--granito, #C9C2B2); border-radius: 2px; }
+.casa-ficha-datos { display: grid; gap: 6px; font-size: 1rem; line-height: 1.42; }
+.casa-ficha-datos li { position: relative; padding-left: 18px; }
+.casa-ficha-datos li::before { content: ""; position: absolute; left: 0; top: .7em; width: 9px; height: 2px; background: var(--casa-acento); }
+.casa-fuente { font: 400 .72rem/1.45 var(--casa-mono); letter-spacing: .02em; color: var(--casa-suave); }
+
+/* ---------- escritorio: el dibujo a la izquierda y la lista y la ficha a la derecha, las dos fijas ---------- */
+@media (min-width: 960px) {
+  .casa-mod { grid-template-columns: minmax(0, 1.75fr) minmax(300px, 1fr); column-gap: clamp(28px, 3.4vw, 56px); }
+  .casa-cabeza { grid-column: 1 / -1; }
+  .casa-pista { grid-column: 1; grid-row: 2; }
+  .casa-panel { grid-column: 2; grid-row: 2; position: sticky; top: calc(var(--casa-cab) + 16px); align-self: start; max-height: calc(100svh - var(--casa-cab) - 32px); overflow: auto; scrollbar-width: thin; padding: 2px 4px 2px 2px; }
+}
+/* móvil y tableta: la ficha justo debajo del dibujo, y la lista después */
+@media (max-width: 959px) {
+  [data-modulo="casa"] { --casa-recorrido: 115svh; }
+  .casa-escena { height: auto; min-height: 0; }
+  .casa-lienzo { width: min(100%, calc((100svh - var(--casa-cab) - 150px) * var(--casa-ar, 1.3))); }
+  .casa-fichas { order: -1; }
+  .casa-ficha { grid-template-columns: minmax(0, 42%) minmax(0, 1fr); column-gap: 14px; row-gap: 8px; }
+  .casa-ficha-cab { grid-column: 2; }
+  .casa-ficha-fotos { grid-column: 1; grid-row: 1 / span 2; }
+  .casa-ficha-datos { grid-column: 2; font-size: .93rem; }
+  .casa-ficha--vacia { display: block; }
+  .casa-ficha-nombre { font-size: 1.32rem; }
+  .casa-baja { position: static; }
+  .casa-foto2 { display: none; }
+}
+@media (max-width: 420px) {
+  .casa-cifras { gap: 6px 16px; }
+  .casa-cifras b { font-size: 1.7rem; }
+  .casa-pin { width: 26px; height: 26px; margin: -13px 0 0 -13px; }
+}
+/* pantallas muy bajas: sin fijar, la casa ya abierta */
+@media (max-height: 520px) {
+  .casa-pista::after { display: none; }
+  .casa-escena { position: relative; top: auto; height: auto; min-height: 0; }
+  .casa-lienzo { width: min(100%, 760px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-modulo="casa"] *, [data-modulo="casa"] *::before, [data-modulo="casa"] *::after { transition-duration: .01ms !important; }
+}

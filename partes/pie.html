@@ -1,0 +1,47 @@
+<!-- ============ pie: la losa se vuelve a cerrar con la lectura y al llegar abajo el nombre está entero ============ -->
+<footer class="pie" id="pie" data-tono="oscuro">
+  <div class="env">
+    <div class="pie__losa" id="pie-losa" aria-hidden="true">
+      <div class="pie__mitad pie__mitad--izq"><span class="pie__nombre">Casa da Laxa</span><span class="pie__lugar">Magros · Beariz · hacia 1800</span></div>
+      <div class="pie__mitad pie__mitad--der"><span class="pie__nombre">Casa da Laxa</span><span class="pie__lugar">Magros · Beariz · hacia 1800</span></div>
+      <svg class="pie__grieta" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M50.00 0 L48.81 3.12 L47.37 6.48 L48.53 8.95 L48.08 13.92 L47.79 19.69 L46.65 25.48 L47.63 29.48 L45.93 33.33 L46.07 37.58 L45.02 41.37 L44.96 44.24 L46.63 47.35 L46.74 49.35 L47.62 51.33 L48.75 55.15 L49.80 58.95 L50.62 62.18 L52.32 66.67 L53.78 70.15 L54.86 72.35 L55.04 74.4 L52.72 76.14 L51.04 78.63 L50.08 82.68 L49.55 85.54 L45.56 90.89 L50.52 95.21 L51.86 100"/></svg>
+    </div>
+    <div class="pie__cols">
+      <div>
+        <h2 class="pie__tit">La casa</h2>
+        <p>Casa de aldea de granito de hacia 1800, restaurada entera en 1999. Se alquila entera, para seis.</p>
+        <p>Rúa Loureiro, 25 · Magros<br>32525 Beariz (Ourense)</p>
+      </div>
+      <div>
+        <h2 class="pie__tit">Reservar</h2>
+        <p><a href="tel:+34688955700" class="mono">688 95 57 00</a><br>Entrada desde las 16:00 · salida hasta las 12:00</p>
+        <a class="btn btn--solaina" href="#reservar">Ver fechas</a>
+      </div>
+      <div>
+        <h2 class="pie__tit">Por aquí</h2>
+        <p><a href="#fuera">El jardín y la piscina fluvial</a><br><a href="#alrededor">Alrededor</a><br><a href="#llegar">Cómo llegar</a><br><a href="https://www.casasrurales.net/casas-rurales/casa-da-laxa--c1183" rel="noopener" target="_blank">10 sobre 10 en casasrurales.net</a></p>
+      </div>
+    </div>
+    <div class="pie__legal">
+      <p>Casa rural inscrita en el Registro de Empresas y Actividades Turísticas de Galicia con el número <span class="mono">TR-OR-000039</span>.</p>
+      <nav aria-label="Legal"><a href="aviso-legal.html">Aviso legal</a><a href="privacidad.html">Privacidad</a><a href="cookies.html">Cookies</a><a href="accesibilidad.html">Accesibilidad</a><button type="button" id="abrir-cookies">Preferencias de cookies</button></nav>
+      <p>© <span id="anno">2026</span> Casa da Laxa · Magros, Beariz</p>
+    </div>
+  </div>
+</footer>
+
+<div class="cookies" id="cookies" role="region" aria-label="Aviso de cookies" hidden>
+  <p>Esta web no usa cookies de análisis ni de publicidad. Guarda en tu navegador que has visto este aviso; las letras vienen de Google Fonts y el mapa de Google solo se carga si lo pides. <a href="cookies.html">Más información</a></p>
+  <div class="cookies__acc">
+    <button class="btn btn--solaina" type="button" id="ck-si">Entendido</button>
+    <button class="btn btn--hueco" type="button" id="ck-no">Solo lo necesario</button>
+  </div>
+</div>
+
+<!-- MANDO DE MAQUETA (no viaja al cliente): solo con ?revision -->
+<div class="mando" id="mando" role="group" aria-label="Dos versiones de la misma web" hidden>
+  <span class="mando__eti">Versión</span>
+  <button type="button" data-densidad="rio" aria-pressed="true">Río</button>
+  <button type="button" data-densidad="sobria" aria-pressed="false">Sobria</button>
+</div>
+<!-- fin del MANDO DE MAQUETA -->

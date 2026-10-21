@@ -1,0 +1,72 @@
+/* ------------------------------------------------------------------
+   Cortina «La laxa»: una losa de granito claro con CASA DA LAXA tallado.
+   Las letras se tallan una a una, la losa se parte por la veta y por la
+   grieta aparece la portada. Pieza suelta (partes/cortina.html + este
+   archivo + js/cortina.js) para poder reutilizar la losa.
+   ------------------------------------------------------------------ */
+.cortina {
+  position: fixed; inset: 0; z-index: 90;
+  /* fondo provisional del mismo granito: tapa la costura de las dos mitades hasta que se abren */
+  background: var(--granito, #C9C2B2) url(../img/granito.webp) 0 0 / 512px repeat;
+  overflow: hidden; pointer-events: auto;
+}
+.cortina[hidden] { display: none; }
+html.cortina-fuera .cortina { display: none; }
+@media (prefers-reduced-motion: reduce) { .cortina { display: none; } }
+html.cortina-activa, html.cortina-activa body { overflow: hidden; }
+
+.cortina__defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+.cortina__mitad {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(120% 80% at 28% 18%, rgba(255, 252, 244, .2), rgba(255, 252, 244, 0) 62%),
+    radial-gradient(90% 70% at 82% 96%, rgba(52, 42, 32, .17), rgba(52, 42, 32, 0) 64%),
+    var(--granito, #C9C2B2) url(../img/granito.webp) 0 0 / 512px repeat;
+  will-change: transform;
+}
+.cortina__mitad--izq { clip-path: polygon(0 0, 52% 0, 52% 100%, 0 100%); transform-origin: 0 100%; }
+.cortina__mitad--der { clip-path: polygon(52% 0, 100% 0, 100% 100%, 52% 100%); transform-origin: 100% 100%; }
+
+.cortina__losa {
+  position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: clamp(14px, 2.4vh, 26px); padding: 24px;
+}
+.cortina__nombre { display: block; overflow: visible; }
+.cortina__nombre text { font-family: 'Gloock', Georgia, 'Times New Roman', serif; font-size: 168px; letter-spacing: .035em; fill: #000; }
+.cortina__nombre--alto text { font-size: 196px; letter-spacing: .02em; }
+.cortina__nombre--ancho { width: min(88vw, 1120px); height: auto; }
+.cortina__nombre--alto { display: none; width: min(70vw, 430px); height: auto; }
+@media (max-aspect-ratio: 4/5) {
+  .cortina__nombre--ancho { display: none; }
+  .cortina__nombre--alto { display: block; }
+}
+
+.cortina__lugar, .cortina__fecha {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace; text-transform: uppercase; letter-spacing: .34em;
+  color: rgba(58, 50, 42, .78); text-shadow: 1px 1px 0 rgba(255, 251, 242, .62), -1px -1px 0 rgba(40, 33, 26, .16);
+  margin: 0; text-align: center;
+}
+.cortina__lugar { font-size: clamp(.8rem, 1.5vw, 1.05rem); padding-left: .34em; }
+.cortina__fecha { display: flex; align-items: center; gap: 14px; font-size: clamp(.66rem, 1.05vw, .78rem); letter-spacing: .28em; }
+.cortina__fecha i { display: block; width: clamp(28px, 5vw, 64px); height: 1px; background: rgba(58, 50, 42, .5); box-shadow: 0 1px 0 rgba(255, 251, 242, .55); transform-origin: center; }
+
+/* la grieta: sombra honda y un filo de luz al lado */
+.cortina__grieta { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; clip-path: inset(0 0 100% 0); pointer-events: none; }
+.cortina__grieta path { fill: none; vector-effect: non-scaling-stroke; stroke-linejoin: round; stroke-linecap: round; }
+.cortina__grieta-sombra { stroke: #2B251F; stroke-width: 2.6; }
+.cortina__grieta-luz { stroke: rgba(255, 251, 242, .85); stroke-width: 1.2; transform: translate(.18px, .1px); }
+
+/* lascas que saltan del cincel */
+.cortina__lascas { position: absolute; inset: 0; pointer-events: none; }
+.cortina__lascas i { position: absolute; display: block; width: 3px; height: 3px; background: #E6DFD2; box-shadow: 1px 1px 0 rgba(42, 36, 29, .5); }
+
+/* sin JS a tiempo, las letras salen solas (la cortina se retira igual a los 6,5 s) */
+.js .cortina__letras, .js .cortina__lugar, .js .cortina__fecha { opacity: 0; animation: cortina-ve 0s 2.4s forwards; }
+.cortina.es-preparada .cortina__letras, .cortina.es-preparada .cortina__fecha { opacity: 1; animation: none; }
+.cortina.es-preparada .cortina__lugar { animation: none; }
+@keyframes cortina-ve { to { opacity: 1; } }
+
+/* estados de partida que pone js/cortina.js (lo del paso 2 no puede estar pintado en el paso 1) */
+.cortina.es-preparada .cortina__lugar, .cortina.es-preparada .cortina__fecha span { opacity: 0; }
+.cortina.es-preparada .cortina__fecha i { transform: scaleX(0); }
+.cortina.es-abriendo { background: transparent; }

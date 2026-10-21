@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Casa da Laxa · casa de piedra a la orilla del río en Magros, Beariz</title>
+<meta name="description" content="Casa de aldea de granito de hacia 1800, restaurada entera en 1999, con el jardín en la orilla del río de Magros (Beariz, Ourense). Se alquila entera: seis personas, tres dormitorios con baño.">
+<meta property="og:title" content="Casa da Laxa · a la orilla del río de Magros">
+<meta property="og:description" content="Casa de piedra de hacia 1800 para seis personas, con el jardín en la orilla del río. Magros, Beariz (Ourense).">
+<link rel="preload" as="image" type="image/avif" imagesrcset="img/fotos/rio-ventana-hero-480.avif 480w, img/fotos/rio-ventana-hero-622.avif 622w" imagesizes="(max-width: 999px) 100vw, 560px" fetchpriority="high">
+<!-- script bloqueante: clases antes del primer pintado -->
+<script>
+(function (d) {
+  var h = d.documentElement;
+  h.classList.add('js');
+  // MANDO DE MAQUETA (no viaja al cliente): solo con ?revision
+  try {
+    var q = new URLSearchParams(location.search);
+    if (q.has('revision')) {
+      h.classList.add('revision');
+      if (q.get('densidad') === 'sobria') h.classList.add('densidad-sobria');
+    }
+  } catch (e) {}
+  // red de seguridad por si main.js o cortina.js no llegan: la losa se va sola
+  window.__redCortina = setTimeout(function () { h.classList.add('cortina-fuera'); }, 6500);
+})(document);
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Hanken+Grotesk:wght@400;500;600&family=IBM+Plex+Mono&display=swap">
+<link rel="stylesheet" href="css/estilos.css?v=02efd1e7">
+<link rel="stylesheet" href="css/cortina.css?v=19c561be">
+<link rel="stylesheet" href="css/rio.css?v=fcc4e5b3">
+<link rel="stylesheet" href="css/fachada.css?v=67606330">
+<link rel="stylesheet" href="css/casa.css?v=92ecc89b">
+<link rel="icon" href="marca/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="marca/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="marca/apple-touch-icon.png">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#1E2F2B">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:image" content="img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<noscript><style>.cortina{display:none!important}</style></noscript>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LodgingBusiness",
+  "name": "Casa da Laxa",
+  "description": "Casa de aldea de granito de hacia 1800, restaurada en 1999. Se alquila entera para seis personas: tres dormitorios con baño, salón con chimenea de piedra, cocina equipada y jardín en la orilla del río.",
+  "image": "img/og.jpg",
+  "telephone": "+34 688 95 57 00",
+  "address": { "@type": "PostalAddress", "streetAddress": "Rúa Loureiro, 25, Magros", "postalCode": "32525", "addressLocality": "Beariz", "addressRegion": "Ourense", "addressCountry": "ES" },
+  "geo": { "@type": "GeoCoordinates", "latitude": 42.46028, "longitude": -8.2553 },
+  "checkinTime": "16:00",
+  "checkoutTime": "12:00",
+  "numberOfRooms": 3,
+  "amenityFeature": [
+    { "@type": "LocationFeatureSpecification", "name": "Jardín junto al río", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Barbacoa cubierta", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Chimenea", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Calefacción", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Wifi", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Aparcamiento", "value": true }
+  ],
+  "knowsLanguage": ["es", "gl", "en", "fr", "pt"]
+}
+</script>
+</head>
+<body>
+<!-- ============ cortina «La laxa»: granito claro, el nombre tallado letra a letra y la losa que se parte por la veta ============
+     Piezas propias (partes/cortina.html, css/cortina.css, js/cortina.js) para poder llevar la losa a la portada si se pide.
+     Sin JS, con movimiento reducido o si algo se atasca, se retira sola (ver cabeza y css). -->
+<div class="cortina" id="cortina" aria-hidden="true">
+  <svg class="cortina__defs" width="0" height="0" focusable="false">
+    <defs>
+      <!-- bajorrelieve: el hueco algo más oscuro, sombra dentro arriba a la izquierda y luz dentro abajo a la derecha -->
+      <filter id="talla" x="-4%" y="-12%" width="108%" height="124%" color-interpolation-filters="sRGB">
+        <feComponentTransfer in="SourceAlpha" result="A"><feFuncA type="linear" slope="8"/></feComponentTransfer>
+        <feFlood flood-color="#4F463C" flood-opacity=".32" result="hueco"/>
+        <feComposite in="hueco" in2="A" operator="in" result="fondo"/>
+        <feOffset in="A" dx="3" dy="3.4" result="abajo"/>
+        <feComposite in="A" in2="abajo" operator="out" result="bordeArriba"/>
+        <feGaussianBlur in="bordeArriba" stdDeviation="1.4" result="bA"/>
+        <feFlood flood-color="#2A241D" flood-opacity=".82"/>
+        <feComposite in2="bA" operator="in" result="sombra"/>
+        <feOffset in="A" dx="-2.2" dy="-2.4" result="arriba"/>
+        <feComposite in="A" in2="arriba" operator="out" result="bordeAbajo"/>
+        <feGaussianBlur in="bordeAbajo" stdDeviation="1" result="bB"/>
+        <feFlood flood-color="#FFFBF2" flood-opacity=".78"/>
+        <feComposite in2="bB" operator="in" result="luz"/>
+        <feMerge><feMergeNode in="fondo"/><feMergeNode in="sombra"/><feMergeNode in="luz"/></feMerge>
+        <feComposite in2="A" operator="in"/>
+      </filter>
+    </defs>
+  </svg>
+  <div class="cortina__mitad cortina__mitad--izq">
+    <div class="cortina__losa">
+      <svg class="cortina__nombre cortina__nombre--ancho" viewBox="0 0 1200 230" aria-hidden="true">
+        <g class="cortina__letras"><text x="600" y="178" text-anchor="middle" filter="url(#talla)">CASA DA LAXA</text></g>
+      </svg>
+      <svg class="cortina__nombre cortina__nombre--alto" viewBox="0 0 600 640" aria-hidden="true">
+        <g class="cortina__letras"><text x="300" y="190" text-anchor="middle" filter="url(#talla)">CASA</text><text x="300" y="385" text-anchor="middle" filter="url(#talla)">DA</text><text x="300" y="580" text-anchor="middle" filter="url(#talla)">LAXA</text></g>
+      </svg>
+      <p class="cortina__lugar">Magros · Beariz</p>
+      <p class="cortina__fecha"><i></i><span>hacia 1800</span><i></i></p>
+    </div>
+  </div>
+  <div class="cortina__mitad cortina__mitad--der">
+    <div class="cortina__losa">
+      <svg class="cortina__nombre cortina__nombre--ancho" viewBox="0 0 1200 230" aria-hidden="true">
+        <g class="cortina__letras"><text x="600" y="178" text-anchor="middle" filter="url(#talla)">CASA DA LAXA</text></g>
+      </svg>
+      <svg class="cortina__nombre cortina__nombre--alto" viewBox="0 0 600 640" aria-hidden="true">
+        <g class="cortina__letras"><text x="300" y="190" text-anchor="middle" filter="url(#talla)">CASA</text><text x="300" y="385" text-anchor="middle" filter="url(#talla)">DA</text><text x="300" y="580" text-anchor="middle" filter="url(#talla)">LAXA</text></g>
+      </svg>
+      <p class="cortina__lugar">Magros · Beariz</p>
+      <p class="cortina__fecha"><i></i><span>hacia 1800</span><i></i></p>
+    </div>
+  </div>
+  <svg class="cortina__grieta" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+    <path class="cortina__grieta-luz" d=""/>
+    <path class="cortina__grieta-sombra" d=""/>
+  </svg>
+  <div class="cortina__lascas" aria-hidden="true"></div>
+</div>
+<a class="saltar" href="#principal">Saltar al contenido</a>
+
+<!-- ============ cabecera fija: el nombre en Gloock, las cuatro paradas y el teléfono ============ -->
+<header class="cab" id="cab">
+  <div class="cab__in">
+    <a class="marca" href="./" aria-label="Casa da Laxa, Magros: a la portada"><span class="marca__nombre" aria-hidden="true">Casa da Laxa</span><span class="marca__lugar" aria-hidden="true">Magros · Beariz</span></a>
+    <nav class="cab__nav" aria-label="Principal">
+      <a href="#cifras">La casa</a>
+      <a href="#fuera">Fuera</a>
+      <a href="#alrededor">Alrededor</a>
+      <a href="#reservar">Reservar</a>
+    </nav>
+    <a class="cab__tel" href="tel:+34688955700"><span class="vh">Teléfono: </span>688 95 57 00</a>
+    <a class="btn btn--solaina cab__res" href="#reservar">Ver fechas</a>
+    <button class="cab__menu" id="menu-btn" type="button" aria-expanded="false" aria-controls="menu-movil"><span class="vh">Menú</span><i></i><i></i></button>
+  </div>
+  <div class="menu-movil" id="menu-movil" aria-hidden="true">
+    <nav aria-label="Menú">
+      <a href="#cifras"><small>Hacia 1800 · 1999</small>La casa</a>
+      <a href="#fuera"><small>Jardín, barbacoa y piscina fluvial</small>Fuera</a>
+      <a href="#alrededor"><small>Río abajo</small>Alrededor</a>
+      <a href="#reservar"><small>Casa entera para seis</small>Reservar</a>
+      <a href="#llegar"><small>Rúa Loureiro, 25 · Magros</small>Cómo llegar</a>
+    </nav>
+    <p class="menu-movil__tel"><a href="tel:+34688955700">688 95 57 00</a></p>
+  </div>
+</header>
+
+<main id="principal">
+  <!-- la corriente: una línea de agua que baja por la página y une las secciones (js/corriente.js) -->
+  <svg class="corriente" id="corriente" aria-hidden="true" focusable="false"></svg>
+
+  <!-- ============ 1. portada «Á beira do río»: la foto del río en una losa, y solo se mueve el agua (módulo Río) ============ -->
+  <section class="portada" id="portada" aria-labelledby="portada-tit" data-tono="oscuro">
+    <div class="portada__in">
+      <div class="portada__txt">
+        <p class="eyebrow eyebrow--claro">Magros · Beariz · Ourense</p>
+        <h1 class="portada__tit" id="portada-tit"><span class="ln"><span>La casa de piedra</span></span> <span class="ln"><span>a la orilla del río</span></span> <span class="ln"><span>de Magros</span></span></h1>
+        <p class="portada__baj">Casa entera para seis <i aria-hidden="true">·</i> tres dormitorios con baño <i aria-hidden="true">·</i> Beariz, Ourense</p>
+        <div class="portada__acc">
+          <a class="btn btn--solaina" href="#reservar">Ver fechas</a>
+          <a class="btn btn--hueco-claro" href="tel:+34688955700">Llamar <span class="mono">688 95 57 00</span></a>
+        </div>
+      </div>
+      <figure class="portada__losa">
+        <div class="portada__foto grano" data-modulo="rio" data-foto="rio-ventana-hero" data-mascara="rio-ventana-hero">
+          <picture data-foto="rio-ventana-hero"><source type="image/avif" srcset="img/fotos/rio-ventana-hero-480.avif 480w, img/fotos/rio-ventana-hero-622.avif 622w" sizes="(max-width: 999px) 100vw, 560px"><source type="image/webp" srcset="img/fotos/rio-ventana-hero-480.webp 480w, img/fotos/rio-ventana-hero-622.webp 622w" sizes="(max-width: 999px) 100vw, 560px"><img src="img/fotos/rio-ventana-hero-622.jpg" srcset="img/fotos/rio-ventana-hero-480.jpg 480w, img/fotos/rio-ventana-hero-622.jpg 622w" sizes="(max-width: 999px) 100vw, 560px" width="622" height="768" alt="El río de Magros con sus rápidos y el puente de madera, visto desde una ventana de la casa, entre los árboles del invierno" fetchpriority="high" loading="eager" decoding="async"></picture>
+        </div>
+        <figcaption class="portada__pie"><span class="portada__desde">Desde la ventana de la casa</span><span class="portada__pista" aria-hidden="true">Arrastra sobre el agua</span><span class="portada__sonido" data-rio-sonido></span></figcaption>
+      </figure>
+    </div>
+    <a class="portada__baja" href="#cifras"><span class="vh">Bajar a </span><span aria-hidden="true">Río abajo</span><span class="vh">la casa en cifras</span></a>
+  </section>
+
+  <!-- ============ 2. la casa en cifras: los números tallados en el granito ============ -->
+  <section class="sec cifras" id="cifras" aria-labelledby="cifras-tit">
+    <div class="env">
+      <header class="sec-cab">
+        <p class="eyebrow">La casa en cifras</p>
+        <h2 id="cifras-tit" data-partir data-remolino>Una casa de aldea, <em>entera para vosotros</em></h2>
+      </header>
+      <ol class="cifras__lista">
+        <li><b class="talla"><small>hacia</small>1800</b><span>Casa de aldea de granito, con tejado de losa de pizarra</span></li>
+        <li><b class="talla">1999</b><span>Restaurada entera</span></li>
+        <li><b class="talla">6</b><span>personas como máximo: la casa se alquila entera</span></li>
+        <li><b class="talla">3</b><span>dormitorios, cada uno con su baño completo</span></li>
+        <li><b class="talla talla--txt">en la orilla</b><span>el jardín, junto al río</span></li>
+      </ol>
+      <blockquote class="cifras__voz">
+        <p>«Una casa de piedra cerca del río donde podréis disfrutar de la naturaleza y relajaros […]. Se trata de una casa del siglo XIX pero totalmente rehabilitada y adaptada a las necesidades actuales.»</p>
+        <footer>Así la cuentan ellos, en su ficha de casasrurales.net</footer>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- ============ solo en la versión sobria: la casa de un vistazo ============ -->
+  <section class="sec vistazo" id="vistazo" aria-labelledby="vistazo-tit">
+    <div class="env">
+      <h2 class="vistazo__tit" id="vistazo-tit">Casa da Laxa, de un vistazo</h2>
+      <table class="vistazo__tabla">
+        <tbody>
+          <tr><th scope="row">Capacidad</th><td>6 personas como máximo; se alquila la casa entera</td></tr>
+          <tr><th scope="row">Dormitorios</th><td>3: uno con cama de matrimonio y dos con dos camas individuales</td></tr>
+          <tr><th scope="row">Baños</th><td>3 completos, uno en cada dormitorio, y un aseo en la planta baja</td></tr>
+          <tr><th scope="row">Camas</th><td>5, y cuna si la necesitáis</td></tr>
+          <tr><th scope="row">Entrada y salida</th><td>Entrada desde las 16:00 y salida hasta las 12:00 (se pueden ajustar si se acuerda)</td></tr>
+          <tr><th scope="row">Señal</th><td>20 % para confirmar; el resto, a la llegada o antes</td></tr>
+          <tr><th scope="row">Fuera</th><td>Jardín en la orilla del río, barbacoa de piedra cubierta, terraza, huerta y aparcamiento</td></tr>
+          <tr><th scope="row">Distancias</th><td>Piscina fluvial a unos 500 m · O Carballiño, 20 min · Ourense, 54 km · Pontevedra, 50 km · Vigo, 63 km · Santiago, 72 km</td></tr>
+          <tr><th scope="row">Registro</th><td>TR-OR-000039</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============ 3. «Dos siglos»: la fachada que se levanta piedra a piedra (módulo Fachada) ============ -->
+  <section id="siglos" class="sec siglos" aria-labelledby="t-siglos">
+    <div class="env">
+      <header class="sec-cab">
+        <p class="eyebrow">Dos siglos</p>
+        <h2 id="t-siglos" data-partir data-remolino>Granito de hacia 1800, <em>restaurada entera en 1999</em></h2>
+        <p class="sec-cab__txt">Sillares de granito, tejado de losa de pizarra, escaleras de piedra por fuera y, en el primer piso, la solaina: el balcón corrido de madera rojiza, sobre una columna de piedra.</p>
+      </header>
+      <div class="modulo siglos__modulo" data-modulo="fachada">
+        <div class="modulo__respaldo siglos__respaldo">
+          <figure class="siglos__foto">
+            <button type="button" class="foto-btn" data-visor="fachada" aria-label="Ver más grande: la fachada"><picture data-foto="fachada"><source type="image/avif" srcset="img/fotos/fachada-480.avif 480w, img/fotos/fachada-800.avif 800w, img/fotos/fachada-1024.avif 1024w" sizes="(max-width: 899px) 92vw, 54vw"><source type="image/webp" srcset="img/fotos/fachada-480.webp 480w, img/fotos/fachada-800.webp 800w, img/fotos/fachada-1024.webp 1024w" sizes="(max-width: 899px) 92vw, 54vw"><img src="img/fotos/fachada-800.jpg" srcset="img/fotos/fachada-480.jpg 480w, img/fotos/fachada-800.jpg 800w, img/fotos/fachada-1024.jpg 1024w" sizes="(max-width: 899px) 92vw, 54vw" width="1024" height="768" alt="La fachada de Casa da Laxa: muro de granito, la solaina de madera sobre una columna de piedra y las escaleras de piedra" loading="lazy" decoding="async"></picture></button>
+          </figure>
+          <ol class="siglos__paradas">
+            <li><b>Hacia 1800</b><p>Una casa de aldea de granito en Magros, con tejado de losa de pizarra. «Laxa» es losa en gallego.</p></li>
+            <li><b>1999</b><p>Restaurada entera: piedra vista, vigas de madera y una escalera de caracol.</p></li>
+            <li><b>Hoy</b><p>Se alquila entera: seis personas, tres dormitorios con baño y el jardín en la orilla del río.</p></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 4. «La casa por dentro»: la casa en corte (módulo Casa) ============ -->
+  <section id="dentro" class="sec dentro" aria-labelledby="t-dentro">
+    <div class="env">
+      <header class="sec-cab">
+        <p class="eyebrow">La casa por dentro</p>
+        <h2 id="t-dentro" data-partir data-remolino>Piedra vista, vigas <em>y una escalera de caracol</em></h2>
+        <p class="sec-cab__txt">Abajo, la cocina, el salón comedor con la lareira (la chimenea de piedra con campana de pizarra), un aseo y la escalera de caracol. Arriba, los tres dormitorios, cada uno con su baño completo.</p>
+      </header>
+      <div class="modulo dentro__modulo" data-modulo="casa">
+        <div class="modulo__respaldo dentro__respaldo">
+          <ul class="estancias">
+            <li class="estancia"><button type="button" class="foto-btn estancia__foto" data-visor="hab-matrimonio" aria-label="Ver más grande: dormitorio de matrimonio"><picture data-foto="hab-matrimonio"><source type="image/avif" srcset="img/fotos/hab-matrimonio-480.avif 480w, img/fotos/hab-matrimonio-800.avif 800w, img/fotos/hab-matrimonio-1024.avif 1024w" sizes="(max-width: 699px) 40vw, 240px"><source type="image/webp" srcset="img/fotos/hab-matrimonio-480.webp 480w, img/fotos/hab-matrimonio-800.webp 800w, img/fotos/hab-matrimonio-1024.webp 1024w" sizes="(max-width: 699px) 40vw, 240px"><img src="img/fotos/hab-matrimonio-800.jpg" srcset="img/fotos/hab-matrimonio-480.jpg 480w, img/fotos/hab-matrimonio-800.jpg 800w, img/fotos/hab-matrimonio-1024.jpg 1024w" sizes="(max-width: 699px) 40vw, 240px" width="1024" height="768" alt="Dormitorio con cama de matrimonio, paredes de piedra y vigas de madera" loading="lazy" decoding="async"></picture></button><div><h3>Dormitorio de matrimonio</h3><p>Cama de matrimonio · baño completo</p></div></li>
+            <li class="estancia"><button type="button" class="foto-btn estancia__foto" data-visor="hab-dobles-1" aria-label="Ver más grande: dormitorio con dos camas"><picture data-foto="hab-dobles-1"><source type="image/avif" srcset="img/fotos/hab-dobles-1-480.avif 480w, img/fotos/hab-dobles-1-800.avif 800w, img/fotos/hab-dobles-1-1024.avif 1024w" sizes="(max-width: 699px) 40vw, 240px"><source type="image/webp" srcset="img/fotos/hab-dobles-1-480.webp 480w, img/fotos/hab-dobles-1-800.webp 800w, img/fotos/hab-dobles-1-1024.webp 1024w" sizes="(max-width: 699px) 40vw, 240px"><img src="img/fotos/hab-dobles-1-800.jpg" srcset="img/fotos/hab-dobles-1-480.jpg 480w, img/fotos/hab-dobles-1-800.jpg 800w, img/fotos/hab-dobles-1-1024.jpg 1024w" sizes="(max-width: 699px) 40vw, 240px" width="1024" height="768" alt="Dormitorio con dos camas individuales, piedra y vigas" loading="lazy" decoding="async"></picture></button><div><h3>Dormitorio con dos camas</h3><p>Dos camas individuales · baño completo</p></div></li>
+            <li class="estancia"><button type="button" class="foto-btn estancia__foto" data-visor="hab-dobles-2" aria-label="Ver más grande: el otro dormitorio con dos camas"><picture data-foto="hab-dobles-2"><source type="image/avif" srcset="img/fotos/hab-dobles-2-480.avif 480w, img/fotos/hab-dobles-2-800.avif 800w, img/fotos/hab-dobles-2-1024.avif 1024w" sizes="(max-width: 699px) 40vw, 240px"><source type="image/webp" srcset="img/fotos/hab-dobles-2-480.webp 480w, img/fotos/hab-dobles-2-800.webp 800w, img/fotos/hab-dobles-2-1024.webp 1024w" sizes="(max-width: 699px) 40vw, 240px"><img src="img/fotos/hab-dobles-2-800.jpg" srcset="img/fotos/hab-dobles-2-480.jpg 480w, img/fotos/hab-dobles-2-800.jpg 800w, img/fotos/hab-dobles-2-1024.jpg 1024w" sizes="(max-width: 699px) 40vw, 240px" width="1024" height="768" alt="El otro dormitorio con dos camas individuales" loading="lazy" decoding="async"></picture></button><div><h3>Otro dormitorio con dos camas</h3><p>Dos camas individuales · baño completo</p></div></li>
+            <li class="estancia"><button type="button" class="foto-btn estancia__foto" data-visor="lareira" aria-label="Ver más grande: la lareira"><picture data-foto="lareira"><source type="image/avif" srcset="img/fotos/lareira-480.avif 480w, img/fotos/lareira-800.avif 800w, img/fotos/lareira-1024.avif 1024w" sizes="(max-width: 699px) 40vw, 240px"><source type="image/webp" srcset="img/fotos/lareira-480.webp 480w, img/fotos/lareira-800.webp 800w, img/fotos/lareira-1024.webp 1024w" sizes="(max-width: 699px) 40vw, 240px"><img src="img/fotos/lareira-800.jpg" srcset="img/fotos/lareira-480.jpg 480w, img/fotos/lareira-800.jpg 800w, img/fotos/lareira-1024.jpg 1024w" sizes="(max-width: 699px) 40vw, 240px" width="1024" height="768" alt="La lareira: chimenea de piedra con campana de pizarra, frente a un sofá verde" loading="lazy" decoding="async"></picture></button><div><h3>El salón y la lareira</h3><p>Chimenea de piedra y, además, calefacción</p></div></li>
+            <li class="estancia"><button type="button" class="foto-btn estancia__foto" data-visor="salon-comedor" aria-label="Ver más grande: el salón comedor"><picture data-foto="salon-comedor"><source type="image/avif" srcset="img/fotos/salon-comedor-480.avif 480w, img/fotos/salon-comedor-800.avif 800w, img/fotos/salon-comedor-1024.avif 1024w" sizes="(max-width: 699px) 40vw, 240px"><source type="image/webp" srcset="img/fotos/salon-comedor-480.webp 480w, img/fotos/salon-comedor-800.webp 800w, img/fotos/salon-comedor-1024.webp 1024w" sizes="(max-width: 699px) 40vw, 240px"><img src="img/fotos/salon-comedor-800.jpg" srcset="img/fotos/salon-comedor-480.jpg 480w, img/fotos/salon-comedor-800.jpg 800w, img/fotos/salon-comedor-1024.jpg 1024w" sizes="(max-width: 699px) 40vw, 240px" width="1024" height="768" alt="El salón comedor: mesa, sillón y televisión entre paredes de piedra" loading="lazy" decoding="async"></picture></button><div><h3>Salón comedor</h3><p>Piedra y madera · sillones, televisión y DVD</p></div></li>
+            <li class="estancia"><button type="button" class="foto-btn estancia__foto" data-visor="salon" aria-label="Ver más grande: los sofás del salón"><picture data-foto="salon"><source type="image/avif" srcset="img/fotos/salon-480.avif 480w, img/fotos/salon-800.avif 800w, img/fotos/salon-1024.avif 1024w" sizes="(max-width: 699px) 40vw, 240px"><source type="image/webp" srcset="img/fotos/salon-480.webp 480w, img/fotos/salon-800.webp 800w, img/fotos/salon-1024.webp 1024w" sizes="(max-width: 699px) 40vw, 240px"><img src="img/fotos/salon-800.jpg" srcset="img/fotos/salon-480.jpg 480w, img/fotos/salon-800.jpg 800w, img/fotos/salon-1024.jpg 1024w" sizes="(max-width: 699px) 40vw, 240px" width="1024" height="768" alt="Sofás de flores azules en el salón" loading="lazy" decoding="async"></picture></button><div><h3>Para descansar</h3><p>Sofás y sillones</p></div></li>
+            <li class="estancia"><button type="button" class="foto-btn estancia__foto" data-visor="cocina" aria-label="Ver más grande: la cocina"><picture data-foto="cocina"><source type="image/avif" srcset="img/fotos/cocina-480.avif 480w, img/fotos/cocina-800.avif 800w, img/fotos/cocina-1024.avif 1024w" sizes="(max-width: 699px) 40vw, 240px"><source type="image/webp" srcset="img/fotos/cocina-480.webp 480w, img/fotos/cocina-800.webp 800w, img/fotos/cocina-1024.webp 1024w" sizes="(max-width: 699px) 40vw, 240px"><img src="img/fotos/cocina-800.jpg" srcset="img/fotos/cocina-480.jpg 480w, img/fotos/cocina-800.jpg 800w, img/fotos/cocina-1024.jpg 1024w" sizes="(max-width: 699px) 40vw, 240px" width="1024" height="768" alt="La cocina de madera" loading="lazy" decoding="async"></picture></button><div><h3>Cocina</h3><p>Horno, microondas, lavadora y lavavajillas · mesa y sillas</p></div></li>
+            <li class="estancia"><button type="button" class="foto-btn estancia__foto" data-visor="escalera" aria-label="Ver más grande: la escalera de caracol"><picture data-foto="escalera"><source type="image/avif" srcset="img/fotos/escalera-480.avif 480w, img/fotos/escalera-800.avif 800w, img/fotos/escalera-1024.avif 1024w" sizes="(max-width: 699px) 40vw, 240px"><source type="image/webp" srcset="img/fotos/escalera-480.webp 480w, img/fotos/escalera-800.webp 800w, img/fotos/escalera-1024.webp 1024w" sizes="(max-width: 699px) 40vw, 240px"><img src="img/fotos/escalera-800.jpg" srcset="img/fotos/escalera-480.jpg 480w, img/fotos/escalera-800.jpg 800w, img/fotos/escalera-1024.jpg 1024w" sizes="(max-width: 699px) 40vw, 240px" width="1024" height="768" alt="La escalera de caracol de madera junto a un aparador" loading="lazy" decoding="async"></picture></button><div><h3>La escalera de caracol</h3><p>De madera, entre las dos plantas</p></div></li>
+          </ul>
+        </div>
+      </div>
+      <p class="dentro__nota">Además, un aseo en la planta baja. Hay cuna si la necesitáis. Wifi, leña, ropa de cama y toallas incluidas.</p>
+    </div>
+  </section>
+
+  <!-- ============ 5. fuera: el jardín, la barbacoa y la piscina fluvial ============ -->
+  <section id="fuera" class="sec fuera" aria-labelledby="fuera-tit">
+    <div class="env">
+      <header class="sec-cab">
+        <p class="eyebrow">Fuera</p>
+        <h2 id="fuera-tit" data-partir data-remolino>El jardín, <em>en la orilla del río</em></h2>
+        <p class="sec-cab__txt">Césped, árboles y arbustos hasta el agua, bancos con mesa, una terraza y la huerta. Y una barbacoa de piedra cubierta, para seguir haciendo barbacoas aunque el tiempo no acompañe.</p>
+      </header>
+      <div class="fuera__rejilla">
+        <figure class="fuera__f fuera__f--jardin" data-revela>
+          <button type="button" class="foto-btn grano" data-visor="jardin" aria-label="Ver más grande: el jardín"><picture data-foto="jardin"><source type="image/avif" srcset="img/fotos/jardin-480.avif 480w, img/fotos/jardin-800.avif 800w, img/fotos/jardin-1024.avif 1024w" sizes="(max-width: 699px) 92vw, 46vw"><source type="image/webp" srcset="img/fotos/jardin-480.webp 480w, img/fotos/jardin-800.webp 800w, img/fotos/jardin-1024.webp 1024w" sizes="(max-width: 699px) 92vw, 46vw"><img src="img/fotos/jardin-800.jpg" srcset="img/fotos/jardin-480.jpg 480w, img/fotos/jardin-800.jpg 800w, img/fotos/jardin-1024.jpg 1024w" sizes="(max-width: 699px) 92vw, 46vw" width="1024" height="768" alt="Una mesa de merendero de piedra y madera bajo un árbol, en el jardín junto al río" loading="lazy" decoding="async"></picture></button>
+          <figcaption><b>El jardín</b>La mesa de merendero, bajo el árbol y junto al río.</figcaption>
+        </figure>
+        <figure class="fuera__f fuera__f--barbacoa" data-revela>
+          <button type="button" class="foto-btn grano" data-visor="barbacoa" aria-label="Ver más grande: la barbacoa"><picture data-foto="barbacoa"><source type="image/avif" srcset="img/fotos/barbacoa-480.avif 480w, img/fotos/barbacoa-800.avif 800w, img/fotos/barbacoa-1024.avif 1024w" sizes="(max-width: 699px) 92vw, 30vw"><source type="image/webp" srcset="img/fotos/barbacoa-480.webp 480w, img/fotos/barbacoa-800.webp 800w, img/fotos/barbacoa-1024.webp 1024w" sizes="(max-width: 699px) 92vw, 30vw"><img src="img/fotos/barbacoa-800.jpg" srcset="img/fotos/barbacoa-480.jpg 480w, img/fotos/barbacoa-800.jpg 800w, img/fotos/barbacoa-1024.jpg 1024w" sizes="(max-width: 699px) 92vw, 30vw" width="1024" height="768" alt="La barbacoa de piedra cubierta, mirando al bosque" loading="lazy" decoding="async"></picture></button>
+          <figcaption><b>La barbacoa</b>De piedra y cubierta, aunque el tiempo no acompañe.</figcaption>
+        </figure>
+        <figure class="fuera__f fuera__f--barbacoa2" data-revela>
+          <button type="button" class="foto-btn grano" data-visor="barbacoa-2" aria-label="Ver más grande: la barbacoa con luz de día"><picture data-foto="barbacoa-2"><source type="image/avif" srcset="img/fotos/barbacoa-2-480.avif 480w, img/fotos/barbacoa-2-640.avif 640w" sizes="(max-width: 699px) 92vw, 22vw"><source type="image/webp" srcset="img/fotos/barbacoa-2-480.webp 480w, img/fotos/barbacoa-2-640.webp 640w" sizes="(max-width: 699px) 92vw, 22vw"><img src="img/fotos/barbacoa-2-640.jpg" srcset="img/fotos/barbacoa-2-480.jpg 480w, img/fotos/barbacoa-2-640.jpg 640w" sizes="(max-width: 699px) 92vw, 22vw" width="640" height="426" alt="La zona de barbacoa cubierta de piedra, con más luz" loading="lazy" decoding="async"></picture></button>
+          <figcaption><b>Bajo techo</b>Mesa, bancos y el fuego a cubierto.</figcaption>
+        </figure>
+        <figure class="fuera__f fuera__f--ventana" data-revela>
+          <button type="button" class="foto-btn grano" data-visor="ventana-2" aria-label="Ver más grande: el jardín desde la ventana"><picture data-foto="ventana-2"><source type="image/avif" srcset="img/fotos/ventana-2-480.avif 480w, img/fotos/ventana-2-640.avif 640w" sizes="(max-width: 699px) 92vw, 26vw"><source type="image/webp" srcset="img/fotos/ventana-2-480.webp 480w, img/fotos/ventana-2-640.webp 640w" sizes="(max-width: 699px) 92vw, 26vw"><img src="img/fotos/ventana-2-640.jpg" srcset="img/fotos/ventana-2-480.jpg 480w, img/fotos/ventana-2-640.jpg 640w" sizes="(max-width: 699px) 92vw, 26vw" width="640" height="520" alt="Desde la ventana: el río, el puente de madera y el jardín con su valla" loading="lazy" decoding="async"></picture></button>
+          <figcaption><b>Desde la ventana</b>El río, el puente de madera y el jardín.</figcaption>
+        </figure>
+        <figure class="fuera__f fuera__f--piscina" data-revela>
+          <button type="button" class="foto-btn grano" data-visor="piscina" aria-label="Ver más grande: la piscina fluvial"><picture data-foto="piscina"><source type="image/avif" srcset="img/fotos/piscina-480.avif 480w, img/fotos/piscina-800.avif 800w, img/fotos/piscina-1024.avif 1024w" sizes="(max-width: 699px) 92vw, 40vw"><source type="image/webp" srcset="img/fotos/piscina-480.webp 480w, img/fotos/piscina-800.webp 800w, img/fotos/piscina-1024.webp 1024w" sizes="(max-width: 699px) 92vw, 40vw"><img src="img/fotos/piscina-800.jpg" srcset="img/fotos/piscina-480.jpg 480w, img/fotos/piscina-800.jpg 800w, img/fotos/piscina-1024.jpg 1024w" sizes="(max-width: 699px) 92vw, 40vw" width="1024" height="768" alt="La piscina fluvial de Magros: agua quieta y un puente con baranda blanca reflejado" loading="lazy" decoding="async"></picture></button>
+          <figcaption><b>La piscina fluvial de Magros</b>A unos 500 m, en el Rego da Touza: una presa remansa el agua y en verano hay baño. Mesas de merendero al lado.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 6. con nieve y de noche: las dos fotos que no tiene nadie ============ -->
+  <section id="estaciones" class="sec estaciones" aria-labelledby="estaciones-tit" data-tono="oscuro">
+    <div class="env">
+      <header class="sec-cab">
+        <p class="eyebrow eyebrow--claro">Con nieve y de noche</p>
+        <h2 id="estaciones-tit" data-partir data-remolino>La misma casa, <em>otras dos luces</em></h2>
+      </header>
+      <div class="estaciones__par">
+        <figure class="marco marco--nieve" data-revela>
+          <button type="button" class="foto-btn" data-visor="nieve" aria-label="Ver más grande: la casa con nieve"><picture data-foto="nieve"><source type="image/avif" srcset="img/fotos/nieve-480.avif 480w, img/fotos/nieve-640.avif 640w" sizes="(max-width: 699px) 92vw, 480px"><source type="image/webp" srcset="img/fotos/nieve-480.webp 480w, img/fotos/nieve-640.webp 640w" sizes="(max-width: 699px) 92vw, 480px"><img src="img/fotos/nieve-640.jpg" srcset="img/fotos/nieve-480.jpg 480w, img/fotos/nieve-640.jpg 640w" sizes="(max-width: 699px) 92vw, 480px" width="640" height="480" alt="La casa y el hórreo con los tejados nevados, delante un prado blanco" loading="lazy" decoding="async"></picture></button>
+          <figcaption><span class="mono">Un invierno</span>Los tejados de losa en blanco y el hórreo al lado.</figcaption>
+        </figure>
+        <figure class="marco marco--noche" data-revela>
+          <button type="button" class="foto-btn" data-visor="noche" aria-label="Ver más grande: la casa de noche"><picture data-foto="noche"><source type="image/avif" srcset="img/fotos/noche-480.avif 480w, img/fotos/noche-640.avif 640w" sizes="(max-width: 699px) 92vw, 560px"><source type="image/webp" srcset="img/fotos/noche-480.webp 480w, img/fotos/noche-640.webp 640w" sizes="(max-width: 699px) 92vw, 560px"><img src="img/fotos/noche-640.jpg" srcset="img/fotos/noche-480.jpg 480w, img/fotos/noche-640.jpg 640w" sizes="(max-width: 699px) 92vw, 560px" width="640" height="400" alt="La casa a la hora azul, con las ventanas y la solaina encendidas, el hórreo y una farola" loading="lazy" decoding="async"></picture></button>
+          <figcaption><span class="mono">A la hora azul</span>Las ventanas encendidas y la calle de la aldea.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 7. lo que dicen ============ -->
+  <section id="opiniones" class="sec opiniones" aria-labelledby="opiniones-tit">
+    <div class="env">
+      <header class="sec-cab">
+        <p class="eyebrow">Lo que dicen</p>
+        <h2 id="opiniones-tit" data-partir data-remolino><span class="talla">10</span> sobre 10 <em>en casasrurales.net</em></h2>
+      </header>
+      <div class="opiniones__lista">
+        <figure class="cita" data-revela>
+          <blockquote><p>«Casa da Laxa es la mejor casa rural en la que hemos estado mi familia de 5 miembros. La casa presenta un enclave excepcional al lado de un pequeño río, con zonas para la lectura, relax y meditación. […] La limpieza es excelente. Pilar es una anfitriona muy simpática […] Absolutamente recomendable.»</p></blockquote>
+          <figcaption><b>Juan Pablo</b><span class="mono">Julio de 2024 · familia de cinco</span></figcaption>
+        </figure>
+        <figure class="cita cita--ventana" data-revela>
+          <blockquote><p>«Unos días de descanso maravillosos. Abrir la ventana por la mañana, y ver ese paisaje (el río, el bosque…), no hay palabras. La casa un 10, la dueña otro 10. ¡En verano tiene que ser mejor aún, si cabe!»</p></blockquote>
+          <figcaption><b>Mónica</b><span class="mono">Marzo de 2023</span></figcaption>
+        </figure>
+      </div>
+      <div class="opiniones__pie">
+        <p class="opiniones__remate"><span class="mono">Y Pilar contestó</span>«Gracias por su valoración, pero vosotros sois de 10.»</p>
+        <a class="enlace" href="https://www.casasrurales.net/casas-rurales/casa-da-laxa--c1183" rel="noopener" target="_blank">Leer las opiniones en casasrurales.net</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 8. alrededor: río abajo, con la corriente uniendo cada parada ============ -->
+  <section id="alrededor" class="sec alrededor" aria-labelledby="alrededor-tit" data-tono="oscuro">
+    <div class="env">
+      <header class="sec-cab">
+        <p class="eyebrow eyebrow--claro">Alrededor</p>
+        <h2 id="alrededor-tit" data-partir data-remolino>Río abajo, <em>de la piscina fluvial a Santiago</em></h2>
+        <p class="sec-cab__txt">Magros está a unos 2 km de Beariz, en la raya entre Ourense y Pontevedra. Senderismo, rutas en bici, pesca, aves, termas y el vino del Ribeiro.</p>
+      </header>
+      <ol class="rioabajo">
+        <li class="rioabajo__p"><i class="rioabajo__piedra" data-corriente-paso aria-hidden="true"></i><span class="rioabajo__d">500 m</span><div><h3>Piscina fluvial de Magros</h3><p>En el Rego da Touza, con presa y mesas de merendero.</p></div></li>
+        <li class="rioabajo__p"><i class="rioabajo__piedra" data-corriente-paso aria-hidden="true"></i><span class="rioabajo__d">14 km de ruta</span><div><h3>Ruta de Magros</h3><p>A pie o en bici, con vistas al monte Marcofán y a la aldea. Por el camino, el castro de Magros y la capilla de San Xoán.</p></div></li>
+        <li class="rioabajo__p"><i class="rioabajo__piedra" data-corriente-paso aria-hidden="true"></i><span class="rioabajo__d">15 km</span><div><h3>Balneario de Partovia</h3><p>El balneario más cerca de la casa.</p></div></li>
+        <li class="rioabajo__p"><i class="rioabajo__piedra" data-corriente-paso aria-hidden="true"></i><span class="rioabajo__d">20 min</span><div><h3>Balneario de O Carballiño</h3><p>En coche, unos veinte minutos.</p></div></li>
+        <li class="rioabajo__p"><i class="rioabajo__piedra" data-corriente-paso aria-hidden="true"></i><span class="rioabajo__d">media hora</span><div><h3>Termas de Prexigueiro</h3><p>Y, más allá, las termas de Ourense.</p></div></li>
+        <li class="rioabajo__p"><i class="rioabajo__piedra" data-corriente-paso aria-hidden="true"></i><span class="rioabajo__d">45 km</span><div><h3>Ribadavia y el Ribeiro</h3><p>Villa medieval y bodegas de la denominación de origen Ribeiro.</p></div></li>
+        <li class="rioabajo__p"><i class="rioabajo__piedra" data-corriente-paso aria-hidden="true"></i><span class="rioabajo__d">45 km</span><div><h3>Monasterio de Oseira</h3><p>Un monasterio a la misma distancia que Ribadavia.</p></div></li>
+        <li class="rioabajo__p"><i class="rioabajo__piedra" data-corriente-paso aria-hidden="true"></i><span class="rioabajo__d">más lejos</span><div><h3>Cañones del Sil</h3><p>En la Ribeira Sacra.</p></div></li>
+        <li class="rioabajo__p rioabajo__p--ciudades"><i class="rioabajo__piedra" data-corriente-paso aria-hidden="true"></i><span class="rioabajo__d">en coche</span><div><h3>Las ciudades</h3>
+          <ul class="ciudades"><li><b>Pontevedra</b><span class="mono">50 km</span></li><li><b>Ourense</b><span class="mono">54 km</span></li><li><b>Vigo</b><span class="mono">63 km</span></li><li><b>Santiago</b><span class="mono">72 km</span></li><li><b>Lugo</b><span class="mono">120 km</span></li><li><b>A Coruña</b><span class="mono">140 km</span></li></ul>
+          <p>Aeropuertos: Santiago a 75 km y Vigo a 80.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ 9. el puente: cruzarlo es la transición a reservar (módulo Río en los rápidos) ============ -->
+  <section id="puente" class="puente" aria-labelledby="puente-tit" data-tono="oscuro">
+    <div class="puente__escena">
+      <div class="puente__marco">
+        <div class="puente__foto grano" data-modulo="rio" data-foto="puente" data-mascara="puente">
+          <picture data-foto="puente"><source type="image/avif" srcset="img/fotos/puente-480.avif 480w, img/fotos/puente-800.avif 800w, img/fotos/puente-940.avif 940w" sizes="(max-width: 999px) 100vw, 80vw"><source type="image/webp" srcset="img/fotos/puente-480.webp 480w, img/fotos/puente-800.webp 800w, img/fotos/puente-940.webp 940w" sizes="(max-width: 999px) 100vw, 80vw"><img src="img/fotos/puente-800.jpg" srcset="img/fotos/puente-480.jpg 480w, img/fotos/puente-800.jpg 800w, img/fotos/puente-940.jpg 940w" sizes="(max-width: 999px) 100vw, 80vw" width="940" height="768" alt="El puente de madera sobre los rápidos del río; detrás, entre árboles, una casa de piedra" loading="lazy" decoding="async"></picture>
+        </div>
+      </div>
+      <div class="puente__txt">
+        <p class="eyebrow eyebrow--claro">Reservar</p>
+        <h2 class="puente__tit" id="puente-tit">Cruza el puente</h2>
+        <p class="puente__baj">Al otro lado, las noches libres de la casa.</p>
+        <span class="puente__sonido" data-rio-sonido></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ reservar: la casa entera (DEMOSTRACIÓN, js/reserva.js) ============ -->
+<section class="sec reservar" id="reservar" aria-labelledby="reservar-tit">
+  <div class="env">
+    <header class="sec-cab reservar__cab">
+      <p class="eyebrow">Al otro lado del puente</p>
+      <h2 id="reservar-tit" data-partir data-remolino>La casa entera, <em>las noches que elijáis</em></h2>
+      <p class="sec-cab__txt">Elegid la llegada y la salida, cuántos venís y vuestros datos. Si lo preferís, llamad al <a class="enlace" href="tel:+34688955700">688 95 57 00</a>: responden en menos de 24 horas.</p>
+    </header>
+    <p class="demo" role="note"><b>Demostración.</b> Así funcionará la reserva directa: las noches ocupadas son de ejemplo, los precios son supuestos y no se envía, se guarda ni se cobra nada.</p>
+    <div class="motor" id="motor" aria-live="off">
+      <noscript><p class="motor__sin">Para reservar sin JavaScript, llamad al <a href="tel:+34688955700">688 95 57 00</a>.</p></noscript>
+    </div>
+    <div class="reservar__saber">
+      <section class="saber" aria-labelledby="saber-tit">
+        <h3 id="saber-tit">Lo que hay que saber</h3>
+        <dl class="saber__lista">
+          <div><dt>Entrada y salida</dt><dd>Entrada desde las 16:00 y salida hasta las 12:00. Si os hace falta otra hora, se puede acordar.</dd></div>
+          <div><dt>Señal</dt><dd>El 20 % para confirmar la reserva. El resto, a la llegada o antes, por transferencia, Bizum o tarjeta.</dd></div>
+          <div><dt>Mascotas</dt><dd>Preguntadnos antes de reservar.</dd></div>
+          <div><dt>Incluido</dt><dd>Ropa de cama y toallas, leña, calefacción y wifi. Cuna si la necesitáis.</dd></div>
+          <div><dt>Hablan</dt><dd>Español, gallego, inglés, francés y portugués.</dd></div>
+          <div><dt>No se admiten</dt><dd>Despedidas, ni más personas de las reservadas (seis como máximo). Casa sin humo.</dd></div>
+        </dl>
+      </section>
+      <section class="saber" aria-labelledby="cancelar-tit">
+        <h3 id="cancelar-tit">Si tenéis que cancelar</h3>
+        <ul class="saber__pasos">
+          <li><b class="mono">25 días o más antes</b>Se devuelve la señal entera.</li>
+          <li><b class="mono">Entre 10 y 24 días</b>Se devuelve la mitad de la señal.</li>
+          <li><b class="mono">Menos de 10 días</b>La señal no se devuelve, pero se guarda para otra fecha si hay hueco.</li>
+          <li><b class="mono">Temporada alta</b>En Semana Santa, puentes y festivos nacionales, y del 15 de junio al 15 de septiembre, la señal no se devuelve, pero se guarda para otra fecha.</li>
+          <li><b class="mono">Si cancela la casa</b>Por fuerza mayor, se devuelve todo.</li>
+        </ul>
+        <p class="saber__fuente">Condiciones de su ficha de reservas en Ruralgest. Por confirmar con la casa.</p>
+      </section>
+    </div>
+  </div>
+</section>
+  <!-- ============ cómo llegar ============ -->
+<section class="sec llegar" id="llegar" aria-labelledby="llegar-tit">
+  <div class="env llegar__in">
+    <div class="llegar__txt">
+      <p class="eyebrow">Cómo llegar</p>
+      <h2 id="llegar-tit" data-partir data-remolino>Rúa Loureiro, 25 · <em>Magros</em></h2>
+      <address class="llegar__dir">
+        Casa da Laxa<br>
+        Rúa Loureiro, 25 · Magros<br>
+        32525 Beariz (Ourense)
+      </address>
+      <p class="llegar__baj">En la aldea de Magros, parroquia de Santa María de Beariz, a unos 2 km de Beariz. Acceso asfaltado y aparcamiento en la casa.</p>
+      <ul class="contacto">
+        <li><a href="tel:+34688955700"><b class="mono">688 95 57 00</b><span>Teléfono de la casa</span></a></li>
+        <li><a href="https://www.google.com/maps/search/?api=1&amp;query=Casa+da+Laxa%2C+R%C3%BAa+Loureiro+25%2C+Beariz" rel="noopener" target="_blank"><b>Abrir en Google Maps</b><span>Para ir en coche</span></a></li>
+      </ul>
+    </div>
+    <div class="mapa" id="mapa">
+      <div class="map-consent" id="mapa-consent">
+        <span class="map-consent__l talla" aria-hidden="true">L</span>
+        <p>El mapa es de Google y, al cargarlo, Google puede guardar cookies en tu navegador.</p>
+        <button type="button" class="btn btn--pizarra" id="mapa-btn">Ver el mapa</button>
+        <p class="map-consent__coord mono">Magros: 42,46028 · −8,25530</p>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ============ pie: la losa se vuelve a cerrar con la lectura y al llegar abajo el nombre está entero ============ -->
+<footer class="pie" id="pie" data-tono="oscuro">
+  <div class="env">
+    <div class="pie__losa" id="pie-losa" aria-hidden="true">
+      <div class="pie__mitad pie__mitad--izq"><span class="pie__nombre">Casa da Laxa</span><span class="pie__lugar">Magros · Beariz · hacia 1800</span></div>
+      <div class="pie__mitad pie__mitad--der"><span class="pie__nombre">Casa da Laxa</span><span class="pie__lugar">Magros · Beariz · hacia 1800</span></div>
+      <svg class="pie__grieta" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M50.00 0 L48.81 3.12 L47.37 6.48 L48.53 8.95 L48.08 13.92 L47.79 19.69 L46.65 25.48 L47.63 29.48 L45.93 33.33 L46.07 37.58 L45.02 41.37 L44.96 44.24 L46.63 47.35 L46.74 49.35 L47.62 51.33 L48.75 55.15 L49.80 58.95 L50.62 62.18 L52.32 66.67 L53.78 70.15 L54.86 72.35 L55.04 74.4 L52.72 76.14 L51.04 78.63 L50.08 82.68 L49.55 85.54 L45.56 90.89 L50.52 95.21 L51.86 100"/></svg>
+    </div>
+    <div class="pie__cols">
+      <div>
+        <h2 class="pie__tit">La casa</h2>
+        <p>Casa de aldea de granito de hacia 1800, restaurada entera en 1999. Se alquila entera, para seis.</p>
+        <p>Rúa Loureiro, 25 · Magros<br>32525 Beariz (Ourense)</p>
+      </div>
+      <div>
+        <h2 class="pie__tit">Reservar</h2>
+        <p><a href="tel:+34688955700" class="mono">688 95 57 00</a><br>Entrada desde las 16:00 · salida hasta las 12:00</p>
+        <a class="btn btn--solaina" href="#reservar">Ver fechas</a>
+      </div>
+      <div>
+        <h2 class="pie__tit">Por aquí</h2>
+        <p><a href="#fuera">El jardín y la piscina fluvial</a><br><a href="#alrededor">Alrededor</a><br><a href="#llegar">Cómo llegar</a><br><a href="https://www.casasrurales.net/casas-rurales/casa-da-laxa--c1183" rel="noopener" target="_blank">10 sobre 10 en casasrurales.net</a></p>
+      </div>
+    </div>
+    <div class="pie__legal">
+      <p>Casa rural inscrita en el Registro de Empresas y Actividades Turísticas de Galicia con el número <span class="mono">TR-OR-000039</span>.</p>
+      <nav aria-label="Legal"><a href="aviso-legal.html">Aviso legal</a><a href="privacidad.html">Privacidad</a><a href="cookies.html">Cookies</a><a href="accesibilidad.html">Accesibilidad</a><button type="button" id="abrir-cookies">Preferencias de cookies</button></nav>
+      <p>© <span id="anno">2026</span> Casa da Laxa · Magros, Beariz</p>
+    </div>
+  </div>
+</footer>
+
+<div class="cookies" id="cookies" role="region" aria-label="Aviso de cookies" hidden>
+  <p>Esta web no usa cookies de análisis ni de publicidad. Guarda en tu navegador que has visto este aviso; las letras vienen de Google Fonts y el mapa de Google solo se carga si lo pides. <a href="cookies.html">Más información</a></p>
+  <div class="cookies__acc">
+    <button class="btn btn--solaina" type="button" id="ck-si">Entendido</button>
+    <button class="btn btn--hueco" type="button" id="ck-no">Solo lo necesario</button>
+  </div>
+</div>
+
+<!-- MANDO DE MAQUETA (no viaja al cliente): solo con ?revision -->
+<div class="mando" id="mando" role="group" aria-label="Dos versiones de la misma web" hidden>
+  <span class="mando__eti">Versión</span>
+  <button type="button" data-densidad="rio" aria-pressed="true">Río</button>
+  <button type="button" data-densidad="sobria" aria-pressed="false">Sobria</button>
+</div>
+<!-- fin del MANDO DE MAQUETA -->
+
+<!-- visor de fotos: se abre por el NOMBRE de la foto, no por su puesto -->
+<dialog class="visor" id="visor" aria-label="Foto">
+  <figure class="visor__fig">
+    <img id="visor-img" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="" width="1024" height="768">
+    <figcaption id="visor-pie"></figcaption>
+  </figure>
+  <button type="button" class="visor__btn visor__btn--ant" id="visor-ant" aria-label="Foto anterior">‹</button>
+  <button type="button" class="visor__btn visor__btn--sig" id="visor-sig" aria-label="Foto siguiente">›</button>
+  <button type="button" class="visor__cerrar" id="visor-cerrar">Cerrar</button>
+  <p class="visor__n mono" id="visor-n" aria-live="polite"></p>
+</dialog>
+
+<!-- librerías (jsDelivr, con versión fija): Lenis suaviza el scroll; GSAP y ScrollTrigger los usan los módulos -->
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+<!-- los tres módulos (cada uno en su archivo; si falta alguno, se queda el respaldo del HTML) -->
+<script src="js/rio.js?v=055c5951" defer></script>
+<script src="js/fachada.js?v=8dcb869c" defer></script>
+<script src="js/casa.js?v=51450a26" defer></script>
+<!-- la web -->
+<script src="js/reserva.js?v=70ab30af" defer></script>
+<script src="js/main.js?v=e23a48a1" defer></script>
+<script src="js/corriente.js?v=9f2931fe" defer></script>
+<script src="js/cortina.js?v=1e0b934c" defer></script>
+</body>
+</html>

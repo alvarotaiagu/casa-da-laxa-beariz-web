@@ -1,0 +1,247 @@
+[
+ {
+  "nombre": "rio-ventana-hero",
+  "anchos": [
+   480,
+   622
+  ],
+  "ancho": 622,
+  "alto": 768,
+  "origen": "fotos/rg-12.jpg",
+  "recorte": {
+   "left": 232,
+   "top": 0,
+   "width": 622,
+   "height": 768
+  }
+ },
+ {
+  "nombre": "puente",
+  "anchos": [
+   480,
+   800,
+   940
+  ],
+  "ancho": 940,
+  "alto": 768,
+  "origen": "fotos/rg-01.jpg",
+  "recorte": {
+   "left": 42,
+   "top": 0,
+   "width": 940,
+   "height": 768
+  }
+ },
+ {
+  "nombre": "fachada",
+  "anchos": [
+   480,
+   800,
+   1024
+  ],
+  "ancho": 1024,
+  "alto": 768,
+  "origen": "fotos/rg-02.jpg",
+  "recorte": null
+ },
+ {
+  "nombre": "aldea",
+  "anchos": [
+   480,
+   800,
+   1024
+  ],
+  "ancho": 1024,
+  "alto": 768,
+  "origen": "fotos/rg-03.jpg",
+  "recorte": null
+ },
+ {
+  "nombre": "hab-dobles-1",
+  "anchos": [
+   480,
+   800,
+   1024
+  ],
+  "ancho": 1024,
+  "alto": 768,
+  "origen": "fotos/rg-04.jpg",
+  "recorte": null
+ },
+ {
+  "nombre": "salon-comedor",
+  "anchos": [
+   480,
+   800,
+   1024
+  ],
+  "ancho": 1024,
+  "alto": 768,
+  "origen": "fotos/rg-05.jpg",
+  "recorte": null
+ },
+ {
+  "nombre": "cocina",
+  "anchos": [
+   480,
+   800,
+   1024
+  ],
+  "ancho": 1024,
+  "alto": 768,
+  "origen": "fotos/rg-06.jpg",
+  "recorte": null
+ },
+ {
+  "nombre": "salon",
+  "anchos": [
+   480,
+   800,
+   1024
+  ],
+  "ancho": 1024,
+  "alto": 768,
+  "origen": "fotos/rg-07.jpg",
+  "recorte": null
+ },
+ {
+  "nombre": "barbacoa",
+  "anchos": [
+   480,
+   800,
+   1024
+  ],
+  "ancho": 1024,
+  "alto": 768,
+  "origen": "fotos/rg-08.jpg",
+  "recorte": null
+ },
+ {
+  "nombre": "hab-matrimonio",
+  "anchos": [
+   480,
+   800,
+   1024
+  ],
+  "ancho": 1024,
+  "alto": 768,
+  "origen": "fotos/rg-09.jpg",
+  "recorte": null
+ },
+ {
+  "nombre": "lareira",
+  "anchos": [
+   480,
+   800,
+   1024
+  ],
+  "ancho": 1024,
+  "alto": 768,
+  "origen": "fotos/rg-10.jpg",
+  "recorte": null
+ },
+ {
+  "nombre": "jardin",
+  "anchos": [
+   480,
+   800,
+   1024
+  ],
+  "ancho": 1024,
+  "alto": 768,
+  "origen": "fotos/rg-11.jpg",
+  "recorte": null
+ },
+ {
+  "nombre": "rio-ventana",
+  "anchos": [
+   480,
+   800,
+   1024
+  ],
+  "ancho": 1024,
+  "alto": 768,
+  "origen": "fotos/rg-12.jpg",
+  "recorte": null
+ },
+ {
+  "nombre": "hab-dobles-2",
+  "anchos": [
+   480,
+   800,
+   1024
+  ],
+  "ancho": 1024,
+  "alto": 768,
+  "origen": "fotos/rg-13.jpg",
+  "recorte": null
+ },
+ {
+  "nombre": "piscina",
+  "anchos": [
+   480,
+   800,
+   1024
+  ],
+  "ancho": 1024,
+  "alto": 768,
+  "origen": "fotos/rg-14.jpg",
+  "recorte": null
+ },
+ {
+  "nombre": "escalera",
+  "anchos": [
+   480,
+   800,
+   1024
+  ],
+  "ancho": 1024,
+  "alto": 768,
+  "origen": "fotos/rg-15.jpg",
+  "recorte": null
+ },
+ {
+  "nombre": "noche",
+  "anchos": [
+   480,
+   640
+  ],
+  "ancho": 640,
+  "alto": 400,
+  "origen": "fotos-cr/aFachada-iluminada-con-cesped.jpg",
+  "recorte": null
+ },
+ {
+  "nombre": "nieve",
+  "anchos": [
+   480,
+   640
+  ],
+  "ancho": 640,
+  "alto": 480,
+  "origen": "fotos-cr/100_2185.JPG",
+  "recorte": null
+ },
+ {
+  "nombre": "ventana-2",
+  "anchos": [
+   480,
+   640
+  ],
+  "ancho": 640,
+  "alto": 520,
+  "origen": "fotos-cr/bVistas-al-jardin-desde-la-ventana.jpg",
+  "recorte": null
+ },
+ {
+  "nombre": "barbacoa-2",
+  "anchos": [
+   480,
+   640
+  ],
+  "ancho": 640,
+  "alto": 426,
+  "origen": "fotos-cr/cZona-de-barbacoa-cubierta-de-piedra.jpg",
+  "recorte": null
+ }
+]

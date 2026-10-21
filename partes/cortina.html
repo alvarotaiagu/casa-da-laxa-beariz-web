@@ -1,0 +1,56 @@
+<!-- ============ cortina «La laxa»: granito claro, el nombre tallado letra a letra y la losa que se parte por la veta ============
+     Piezas propias (partes/cortina.html, css/cortina.css, js/cortina.js) para poder llevar la losa a la portada si se pide.
+     Sin JS, con movimiento reducido o si algo se atasca, se retira sola (ver cabeza y css). -->
+<div class="cortina" id="cortina" aria-hidden="true">
+  <svg class="cortina__defs" width="0" height="0" focusable="false">
+    <defs>
+      <!-- bajorrelieve: el hueco algo más oscuro, sombra dentro arriba a la izquierda y luz dentro abajo a la derecha -->
+      <filter id="talla" x="-4%" y="-12%" width="108%" height="124%" color-interpolation-filters="sRGB">
+        <feComponentTransfer in="SourceAlpha" result="A"><feFuncA type="linear" slope="8"/></feComponentTransfer>
+        <feFlood flood-color="#4F463C" flood-opacity=".32" result="hueco"/>
+        <feComposite in="hueco" in2="A" operator="in" result="fondo"/>
+        <feOffset in="A" dx="3" dy="3.4" result="abajo"/>
+        <feComposite in="A" in2="abajo" operator="out" result="bordeArriba"/>
+        <feGaussianBlur in="bordeArriba" stdDeviation="1.4" result="bA"/>
+        <feFlood flood-color="#2A241D" flood-opacity=".82"/>
+        <feComposite in2="bA" operator="in" result="sombra"/>
+        <feOffset in="A" dx="-2.2" dy="-2.4" result="arriba"/>
+        <feComposite in="A" in2="arriba" operator="out" result="bordeAbajo"/>
+        <feGaussianBlur in="bordeAbajo" stdDeviation="1" result="bB"/>
+        <feFlood flood-color="#FFFBF2" flood-opacity=".78"/>
+        <feComposite in2="bB" operator="in" result="luz"/>
+        <feMerge><feMergeNode in="fondo"/><feMergeNode in="sombra"/><feMergeNode in="luz"/></feMerge>
+        <feComposite in2="A" operator="in"/>
+      </filter>
+    </defs>
+  </svg>
+  <div class="cortina__mitad cortina__mitad--izq">
+    <div class="cortina__losa">
+      <svg class="cortina__nombre cortina__nombre--ancho" viewBox="0 0 1200 230" aria-hidden="true">
+        <g class="cortina__letras"><text x="600" y="178" text-anchor="middle" filter="url(#talla)">CASA DA LAXA</text></g>
+      </svg>
+      <svg class="cortina__nombre cortina__nombre--alto" viewBox="0 0 600 640" aria-hidden="true">
+        <g class="cortina__letras"><text x="300" y="190" text-anchor="middle" filter="url(#talla)">CASA</text><text x="300" y="385" text-anchor="middle" filter="url(#talla)">DA</text><text x="300" y="580" text-anchor="middle" filter="url(#talla)">LAXA</text></g>
+      </svg>
+      <p class="cortina__lugar">Magros · Beariz</p>
+      <p class="cortina__fecha"><i></i><span>hacia 1800</span><i></i></p>
+    </div>
+  </div>
+  <div class="cortina__mitad cortina__mitad--der">
+    <div class="cortina__losa">
+      <svg class="cortina__nombre cortina__nombre--ancho" viewBox="0 0 1200 230" aria-hidden="true">
+        <g class="cortina__letras"><text x="600" y="178" text-anchor="middle" filter="url(#talla)">CASA DA LAXA</text></g>
+      </svg>
+      <svg class="cortina__nombre cortina__nombre--alto" viewBox="0 0 600 640" aria-hidden="true">
+        <g class="cortina__letras"><text x="300" y="190" text-anchor="middle" filter="url(#talla)">CASA</text><text x="300" y="385" text-anchor="middle" filter="url(#talla)">DA</text><text x="300" y="580" text-anchor="middle" filter="url(#talla)">LAXA</text></g>
+      </svg>
+      <p class="cortina__lugar">Magros · Beariz</p>
+      <p class="cortina__fecha"><i></i><span>hacia 1800</span><i></i></p>
+    </div>
+  </div>
+  <svg class="cortina__grieta" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+    <path class="cortina__grieta-luz" d=""/>
+    <path class="cortina__grieta-sombra" d=""/>
+  </svg>
+  <div class="cortina__lascas" aria-hidden="true"></div>
+</div>
